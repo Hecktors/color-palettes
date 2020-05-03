@@ -6,7 +6,7 @@ import Palette from './Palette';
 function App() {
   return (
     <div className='App'>
-      <Palette {...palettes[0]} />
+      <Palette {...palettes[1]} />
     </div>
   );
 }
