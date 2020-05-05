@@ -49,3 +49,8 @@
   margin-left: -7px;
   margin-top: -3px;
 }
+
+.select-container {
+  flex-grow: 1;
+  text-align: right;
+}
