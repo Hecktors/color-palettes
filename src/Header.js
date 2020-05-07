@@ -4,6 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import SimpleSnackbar from './SimpleSnackbar';
 import 'rc-slider/assets/index.css';
 import './Header.css';
+import { Link } from 'react-router-dom';
 
 import Slider from 'rc-slider';
 
@@ -29,7 +30,7 @@ class Header extends Component {
     return (
       <header className='Header'>
         <div className='logo'>
-          <a href='/'>color palette</a>
+          <Link to='/palette'>color palette</Link>
         </div>
         <div className='slider-container'>
           <span>Level: {level}</span>
