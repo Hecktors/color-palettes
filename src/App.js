@@ -22,12 +22,19 @@ function App() {
         />
         <Route
           exact
-          path={`/palette/:id`}
+          path={'/palette/:paletteId'}
           render={(routeProps) => (
             <Palette
-              palette={generatePalette(findPalette(routeProps.match.params.id))}
+              palette={generatePalette(
+                findPalette(routeProps.match.params.paletteId)
+              )}
             />
           )}
+        />
+        <Route
+          exact
+          path='/palette/:paletteId/:colorId'
+          render={() => <h1>Color details page</h1>}
         />
         <Route render={() => <Redirect to='/palette' />} />
       </Switch>
