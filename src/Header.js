@@ -25,25 +25,27 @@ class Header extends Component {
   };
 
   render() {
-    const { level, changeLevel } = this.props;
+    const { level, changeLevel, showSlider } = this.props;
     const { format, showSnackbar } = this.state;
     return (
       <header className='Header'>
         <div className='logo'>
           <Link to='/palette'>color palette</Link>
         </div>
-        <div className='slider-container'>
-          <span>Level: {level}</span>
-          <div className='slider'>
-            <Slider
-              onChange={changeLevel}
-              min={100}
-              max={900}
-              defaultValue={level}
-              step={100}
-            />
+        {showSlider && (
+          <div className='slider-container'>
+            <span>Level: {level}</span>
+            <div className='slider'>
+              <Slider
+                onChange={changeLevel}
+                min={100}
+                max={900}
+                defaultValue={level}
+                step={100}
+              />
+            </div>
           </div>
-        </div>
+        )}
         <div className='select-container'>
           <Select onChange={this.handleChange} value={format}>
             <MenuItem value='hex'>HEX - #ffffff</MenuItem>

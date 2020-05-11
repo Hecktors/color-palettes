@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Palette.css';
 import ColorBox from './ColorBox';
+import Header from './Header';
+import Footer from './PaletteFooter';
 
 class ShadesPalette extends Component {
   _shades = this.gatherShades(this.props.palette, this.props.colorId);
@@ -18,16 +20,12 @@ class ShadesPalette extends Component {
     return shades.slice(1);
   }
 
-  // changeLevel = (level) => {
-  //   this.setState({ level });
-  // };
-
-  // changeFormat = (format) => {
-  //   this.setState({ format });
-  // };
+  changeFormat = (format) => {
+    this.setState({ format });
+  };
 
   render() {
-    // name, color, id, paletteId;
+    const { paletteName, emoji } = this.props.palette;
     const colorBoxes = this._shades.map((shade) => (
       <ColorBox
         key={shade.hex}
@@ -38,17 +36,16 @@ class ShadesPalette extends Component {
         // paletteId={this.props.palette.id}
       />
     ));
-    console.log('shades:', this._shades);
 
     return (
       <div className='Palette'>
-        {/* <Header
-          changeLevel={this.changeLevel}
+        <Header
           changeFormat={this.changeFormat}
-          level={level}
-          format={format}
-        /> */}
+          format={this.state.format}
+          showSlider={false}
+        />
         <div className='Palette-colors shades'>{colorBoxes}</div>
+        <Footer paletteName={paletteName} emoji={emoji} />
       </div>
     );
   }

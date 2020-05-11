@@ -3,6 +3,7 @@ import './Palette.css';
 import ColorBox from './ColorBox';
 import { v4 as uuid } from 'uuid';
 import Header from './Header';
+import Footer from './PaletteFooter';
 
 class Palette extends Component {
   state = {
@@ -39,11 +40,10 @@ class Palette extends Component {
           changeFormat={this.changeFormat}
           level={level}
           format={format}
+          showSlider
         />
         <div className='Palette-colors'>{colorBoxes}</div>
-        <footer className='Palette-footer'>
-          {paletteName} <span className='emoji'>{emoji}</span>
-        </footer>
+        <Footer paletteName={paletteName} emoji={emoji} />
       </div>
     );
   }
