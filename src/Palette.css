@@ -9,6 +9,10 @@
   flex-wrap: wrap;
 }
 
+.Palette-colors.shades {
+  flex-wrap: nowrap;
+}
+
 .Palette-footer {
   height: 5vh;
   display: flex;

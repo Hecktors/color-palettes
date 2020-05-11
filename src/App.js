@@ -5,6 +5,7 @@ import Palette from './Palette';
 import { generatePalette } from './colorHelpers';
 import seedColors from './seedColors';
 import PaletteList from './PaletteList';
+import ShadesPalette from './ShadesPalette';
 
 function App() {
   const findPalette = (id) => seedColors.find((color) => color.id === id);
@@ -34,7 +35,14 @@ function App() {
         <Route
           exact
           path='/palette/:paletteId/:colorId'
-          render={() => <h1>Color details page</h1>}
+          render={(routeProps) => (
+            <ShadesPalette
+              colorId={routeProps.match.params.colorId}
+              palette={generatePalette(
+                findPalette(routeProps.match.params.paletteId)
+              )}
+            />
+          )}
         />
         <Route render={() => <Redirect to='/palette' />} />
       </Switch>
