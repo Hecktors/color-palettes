@@ -7,11 +7,16 @@
   cursor: pointer;
 }
 
-.shades .ColorBox {
+.ShadesPalette .ColorBox {
   height: 100%;
 }
 
-.copy-button {
+.ColorBox.go-back {
+  background-color: #000;
+}
+
+.copy-button,
+.back-button {
   width: 100px;
   height: 30px;
   position: absolute;
@@ -30,6 +35,10 @@
   border: none;
   opacity: 0;
   transition: 0.3s;
+}
+
+.back-button {
+  opacity: 1;
 }
 
 .ColorBox:hover .copy-button {

@@ -3,6 +3,7 @@ import './Palette.css';
 import ColorBox from './ColorBox';
 import Header from './Header';
 import Footer from './PaletteFooter';
+import { Link } from 'react-router-dom';
 
 class ShadesPalette extends Component {
   _shades = this.gatherShades(this.props.palette, this.props.colorId);
@@ -25,10 +26,10 @@ class ShadesPalette extends Component {
   };
 
   render() {
-    const { paletteName, emoji } = this.props.palette;
+    const { paletteName, emoji, id } = this.props.palette;
     const colorBoxes = this._shades.map((shade) => (
       <ColorBox
-        key={shade.hex}
+        key={shade.name}
         name={shade.name}
         color={shade[this.state.format]}
         showLink={false}
@@ -38,13 +39,20 @@ class ShadesPalette extends Component {
     ));
 
     return (
-      <div className='Palette'>
+      <div className='ShadesPalette Palette'>
         <Header
           changeFormat={this.changeFormat}
           format={this.state.format}
           showSlider={false}
         />
-        <div className='Palette-colors shades'>{colorBoxes}</div>
+        <div className='Palette-colors'>
+          {colorBoxes}
+          <div className='go-back ColorBox'>
+            <Link to={`/palette/${id}`} className='back-button'>
+              Go Back
+            </Link>
+          </div>
+        </div>
         <Footer paletteName={paletteName} emoji={emoji} />
       </div>
     );

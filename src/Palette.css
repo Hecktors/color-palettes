@@ -9,7 +9,7 @@
   flex-wrap: wrap;
 }
 
-.Palette-colors.shades {
+.ShadesPalette .Palette-colors {
   flex-wrap: nowrap;
 }
 
