@@ -1,9 +1,47 @@
 import React, { Component } from 'react';
-import './Palette.css';
 import ColorBox from './ColorBox';
 import Header from './Header';
 import Footer from './PaletteFooter';
 import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/styles';
+import chroma from 'chroma-js';
+
+const styles = {
+  Palette: {
+    height: '100vh',
+    overflow: 'hidden',
+  },
+  ShadesPalette: {
+    height: ' 90%',
+    display: 'flex',
+    flexWrap: 'wrap',
+    // flexWrap: 'nowrap',
+  },
+  goBack: {
+    width: '20%',
+    height: '25%',
+    margin: '0 auto',
+    display: 'inline-block',
+    position: 'relative',
+    cursor: 'pointer',
+    backgroundColor: '#212121',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '& a': {
+      width: '100px',
+      height: '30px',
+      textAlign: 'center',
+      outline: 'none',
+      fontSize: '1rem',
+      lineHeight: '30px',
+      textTransform: 'uppercase',
+      border: 'none',
+      backgroundColor: 'rgba(255, 255, 255, 0.3)',
+      color: '#fff',
+    },
+  },
+};
 
 class ShadesPalette extends Component {
   _shades = this.gatherShades(this.props.palette, this.props.colorId);
@@ -26,7 +64,10 @@ class ShadesPalette extends Component {
   };
 
   render() {
-    const { paletteName, emoji, id } = this.props.palette;
+    const {
+      palette: { paletteName, emoji, id },
+      classes,
+    } = this.props;
     const colorBoxes = this._shades.map((shade) => (
       <ColorBox
         key={shade.name}
@@ -39,16 +80,16 @@ class ShadesPalette extends Component {
     ));
 
     return (
-      <div className='ShadesPalette Palette'>
+      <div className={classes.Palette}>
         <Header
           changeFormat={this.changeFormat}
           format={this.state.format}
           showSlider={false}
         />
-        <div className='Palette-colors'>
+        <div className={classes.ShadesPalette}>
           {colorBoxes}
-          <div className='go-back ColorBox'>
-            <Link to={`/palette/${id}`} className='back-button'>
+          <div className={classes.goBack}>
+            <Link to={`/palette/${id}`} className={classes.backButton}>
               Go Back
             </Link>
           </div>
@@ -59,4 +100,4 @@ class ShadesPalette extends Component {
   }
 }
 
-export default ShadesPalette;
+export default withStyles(styles)(ShadesPalette);
