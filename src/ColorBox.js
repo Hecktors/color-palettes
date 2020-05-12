@@ -3,6 +3,17 @@ import './ColorBox.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
 import chroma from 'chroma-js';
+import { withStyles } from '@material-ui/styles';
+
+const styles = {
+  textLighter: {
+    color: (props) => (chroma(props.color).luminance() > 0.6 ? '#333' : '#fff'),
+  },
+  textDarker: {
+    color: (props) =>
+      chroma(props.color).luminance() < 0.15 ? '#fff' : '#212121',
+  },
+};
 
 class ColorBox extends Component {
   state = {
@@ -16,9 +27,7 @@ class ColorBox extends Component {
   };
 
   render() {
-    const { name, color, id, paletteId, showLink } = this.props;
-    const isDark = chroma(color).luminance() < 0.2;
-    const isLight = chroma(color).luminance() > 0.5;
+    const { name, color, id, paletteId, showLink, classes } = this.props;
 
     console.log(chroma(color).luminance());
     return (
@@ -28,29 +37,25 @@ class ColorBox extends Component {
             className={`copy-overlay ${this.state.copied ? 'show' : ''}`}
             style={{ background: color }}
           />
-          <div
-            className={`copy-msg ${this.state.copied ? 'show' : ''}${
-              isLight ? ' dark-text' : ''
-            }`}
-          >
-            <h1>COPIED!</h1>
-            <p>{color}</p>
+          <div className={`copy-msg ${this.state.copied ? 'show' : ''}`}>
+            <h1 className={classes.textLighter}>COPIED!</h1>
+            <p className={classes.textLighter}>{color}</p>
           </div>
           <div className='copy-container'>
             <div className='box-content'>
-              <span className={isDark ? 'light-text' : ''}>{name}</span>
+              <span className={classes.textDarker}>{name}</span>
             </div>
-            <button className={`copy-button ${isLight ? 'dark-text' : ''}`}>
+            <button className={`copy-button ${classes.textLighter}`}>
               Copy
             </button>
           </div>
           {showLink && (
             <Link
-              className='see-more'
+              className={`see-more ${classes.textLighter}`}
               to={`/palette/${paletteId}/${id}`}
               onClick={(e) => e.stopPropagation()}
             >
-              <span className={isLight ? 'dark-text' : ''}>More</span>
+              <span>More</span>
             </Link>
           )}
         </div>
@@ -59,4 +64,4 @@ class ColorBox extends Component {
   }
 }
 
-export default ColorBox;
+export default withStyles(styles)(ColorBox);
