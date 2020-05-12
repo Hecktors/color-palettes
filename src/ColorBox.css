@@ -7,12 +7,20 @@
   cursor: pointer;
 }
 
+.ColorBox .light-text {
+  color: #fff;
+}
+
+.ColorBox .dark-text {
+  color: #212121;
+}
+
 .ShadesPalette .ColorBox {
   height: 100%;
 }
 
 .ColorBox.go-back {
-  background-color: #000;
+  background-color: #212121;
 }
 
 .copy-button,
@@ -50,7 +58,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  color: #000;
+  color: #212121;
   padding: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -113,7 +121,7 @@
   padding: 1rem;
   text-align: center;
   font-weight: 400;
-  text-shadow: 1px 2px #000;
+  text-shadow: 1px 2px #212121;
   background-color: rgba(255, 255, 255, 0.2);
 }
 
