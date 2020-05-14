@@ -4,44 +4,7 @@ import Header from './Header';
 import Footer from './PaletteFooter';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
-import chroma from 'chroma-js';
-
-const styles = {
-  Palette: {
-    height: '100vh',
-    overflow: 'hidden',
-  },
-  ShadesPalette: {
-    height: ' 90%',
-    display: 'flex',
-    flexWrap: 'wrap',
-    // flexWrap: 'nowrap',
-  },
-  goBack: {
-    width: '20%',
-    height: '25%',
-    margin: '0 auto',
-    display: 'inline-block',
-    position: 'relative',
-    cursor: 'pointer',
-    backgroundColor: '#212121',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    '& a': {
-      width: '100px',
-      height: '30px',
-      textAlign: 'center',
-      outline: 'none',
-      fontSize: '1rem',
-      lineHeight: '30px',
-      textTransform: 'uppercase',
-      border: 'none',
-      backgroundColor: 'rgba(255, 255, 255, 0.3)',
-      color: '#fff',
-    },
-  },
-};
+import styles from './styles/ShadesPaletteStyles';
 
 class ShadesPalette extends Component {
   _shades = this.gatherShades(this.props.palette, this.props.colorId);
@@ -74,8 +37,6 @@ class ShadesPalette extends Component {
         name={shade.name}
         color={shade[this.state.format]}
         showLink={false}
-        // id={shade.id}
-        // paletteId={this.props.palette.id}
       />
     ));
 

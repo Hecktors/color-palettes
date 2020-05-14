@@ -5,18 +5,7 @@ import { v4 as uuid } from 'uuid';
 import Header from './Header';
 import Footer from './PaletteFooter';
 import { withStyles } from '@material-ui/styles';
-
-const styles = {
-  Palette: {
-    height: '100vh',
-    overflow: 'hidden',
-  },
-  PaletteColors: {
-    height: ' 90%',
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-};
+import styles from './styles/PaletteStyles';
 
 class Palette extends Component {
   state = {

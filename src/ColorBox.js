@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
-import './ColorBox.css';
+// import './ColorBox.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
 import chroma from 'chroma-js';
 import { withStyles } from '@material-ui/styles';
-
-const styles = {
-  textLighter: {
-    color: (props) => (chroma(props.color).luminance() > 0.6 ? '#333' : '#fff'),
-  },
-  textDarker: {
-    color: (props) =>
-      chroma(props.color).luminance() < 0.15 ? '#fff' : '#212121',
-  },
-};
+import styles from './styles/ColoBoxStyles';
 
 class ColorBox extends Component {
   state = {
@@ -32,26 +23,32 @@ class ColorBox extends Component {
     console.log(chroma(color).luminance());
     return (
       <CopyToClipboard onCopy={this.handleCopy} text={color}>
-        <div className={`ColorBox `} style={{ background: color }}>
+        <div className={classes.ColorBox} style={{ background: color }}>
           <div
-            className={`copy-overlay ${this.state.copied ? 'show' : ''}`}
+            className={`${classes.copyOverlay} ${
+              this.state.copied ? classes.showOverlay : ''
+            }`}
             style={{ background: color }}
           />
-          <div className={`copy-msg ${this.state.copied ? 'show' : ''}`}>
-            <h1 className={classes.textLighter}>COPIED!</h1>
-            <p className={classes.textLighter}>{color}</p>
+          <div
+            className={
+              this.state.copied
+                ? [classes.copyMsg, classes.showMsg].join(' ')
+                : classes.copyMsg
+            }
+          >
+            <h1 className={classes.copyText}>COPIED!</h1>
+            <p className={classes.copyText}>{color}</p>
           </div>
           <div className='copy-container'>
-            <div className='box-content'>
-              <span className={classes.textDarker}>{name}</span>
+            <div className={classes.boxContent}>
+              <span className={classes.colorName}>{name}</span>
             </div>
-            <button className={`copy-button ${classes.textLighter}`}>
-              Copy
-            </button>
+            <button className={classes.copyButton}>Copy</button>
           </div>
           {showLink && (
             <Link
-              className={`see-more ${classes.textLighter}`}
+              className={classes.seeMore}
               to={`/palette/${paletteId}/${id}`}
               onClick={(e) => e.stopPropagation()}
             >
