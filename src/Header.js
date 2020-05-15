@@ -3,10 +3,12 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import SimpleSnackbar from './SimpleSnackbar';
 import 'rc-slider/assets/index.css';
-import './Header.css';
+// import './Header.css';
 import { Link } from 'react-router-dom';
-
 import Slider from 'rc-slider';
+import { withStyles } from '@material-ui/styles';
+
+import styles from './styles/HeaderStyles';
 
 class Header extends Component {
   state = {
@@ -25,17 +27,17 @@ class Header extends Component {
   };
 
   render() {
-    const { level, changeLevel, showSlider } = this.props;
+    const { level, changeLevel, showSlider, classes } = this.props;
     const { format, showSnackbar } = this.state;
     return (
-      <header className='Header'>
-        <div className='logo'>
+      <header className={classes.Header}>
+        <div className={classes.logo}>
           <Link to='/palette'>color palette</Link>
         </div>
         {showSlider && (
-          <div className='slider-container'>
+          <div>
             <span>Level: {level}</span>
-            <div className='slider'>
+            <div className={classes.slider}>
               <Slider
                 onChange={changeLevel}
                 min={100}
@@ -64,4 +66,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withStyles(styles)(Header);
