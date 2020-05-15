@@ -10,7 +10,7 @@ import ShadesPalette from './ShadesPalette';
 
 function App() {
   const findPalette = (id) => seedColors.find((color) => color.id === id);
-  console.log(generatePalette(seedColors[4]));
+  // console.log(generatePalette(seedColors[4]));
 
   return (
     <div className='App'>
