@@ -6,17 +6,22 @@ export default {
     justifyContent: 'center',
   },
   container: {
-    // width: '50%',
     display: 'flex',
     alignItems: 'flex-start',
     flexDirection: 'column',
     flexWrap: 'wrap',
   },
   nav: {
+    width: '100%',
+    height: '50px',
     display: 'flex',
-    width: '100',
     justifyContent: 'space-between',
+    alignItems: 'center',
     color: '#fff',
+    '& a': {
+      color: '#fff',
+      textDecoration: 'underline',
+    },
   },
   palettes: {
     width: '100%',

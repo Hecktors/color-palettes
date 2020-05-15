@@ -1,8 +1,8 @@
 export default {
   root: {
+    width: '270px',
     backgroundColor: '#fff',
     padding: '0.5rem',
-    margin: '20px',
     position: 'relative',
     border: '1px solid #999',
     borderRadius: '5px',
