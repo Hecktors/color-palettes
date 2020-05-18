@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -77,10 +77,11 @@ const useStyles = makeStyles((theme) => ({
 
 function NewPaletteForm(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
-  const [newColor, setNewColor] = React.useState('#88f');
-  const [newName, setNewName] = React.useState('');
-  const [colors, setColors] = React.useState([]);
+  const [open, setOpen] = useState(true);
+  const [newColor, setNewColor] = useState('#88f');
+  const [newColorName, setNewColorName] = useState('');
+  const [colors, setColors] = useState([]);
+  const [newPaletteName, setNewPaletteName] = useState('');
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isColorNameUnique', (value) =>
@@ -89,6 +90,13 @@ function NewPaletteForm(props) {
     ValidatorForm.addValidationRule('isColorUnique', () =>
       colors.every(
         ({ color }) => color.toLowerCase() !== newColor.toLowerCase()
+      )
+    );
+    ValidatorForm.addValidationRule('isPaletteNameUnique', (value) =>
+      props.palettes.every(
+        (palette) =>
+          palette.paletteName.toLowerCase().replace(/ /g, '') !==
+          value.toLowerCase().replace(/ /g, '')
       )
     );
   });
@@ -102,20 +110,20 @@ function NewPaletteForm(props) {
   };
 
   const addNewColor = (e) => {
-    const newColorObj = { color: newColor, name: newName };
+    const newColorObj = { color: newColor, name: newColorName };
     setColors([...colors, newColorObj]);
-    setNewName('');
+    setNewColorName('');
   };
 
-  const handleChange = (e) => {
-    setNewName(e.target.value);
-  };
+  // const handleChange = (e, fn) => {
+  //   fn(e.target.value);
+  // };
 
   const handleSubmit = () => {
-    let newName = 'New Test Palette';
+    let paletteName = newPaletteName;
     const newPalette = {
-      paletteName: newName,
-      id: newName.toLowerCase().replace(/ /g, '-'),
+      paletteName: paletteName,
+      id: paletteName.toLowerCase().replace(/ /g, '-'),
       emoji: '🤙',
       colors: colors,
     };
@@ -145,9 +153,20 @@ function NewPaletteForm(props) {
           </IconButton>
           <Typography variant='h6' noWrap>
             Persistent drawer
-            <Button variant='contained' color='primary' onClick={handleSubmit}>
-              Save Palette
-            </Button>
+            <ValidatorForm onSubmit={handleSubmit}>
+              <TextValidator
+                value={newPaletteName}
+                onChange={(e) => setNewPaletteName(e.target.value)}
+                validators={['required', 'isPaletteNameUnique']}
+                errorMessages={[
+                  'Palette Name is required',
+                  'Name already exists',
+                ]}
+              />
+              <Button variant='contained' color='primary' type='submit'>
+                Save Palette
+              </Button>
+            </ValidatorForm>
           </Typography>
         </Toolbar>
       </AppBar>
@@ -181,9 +200,8 @@ function NewPaletteForm(props) {
         />
         <ValidatorForm onSubmit={addNewColor}>
           <TextValidator
-            value={newName}
-            col={colors}
-            onChange={handleChange}
+            value={newColorName}
+            onChange={(e) => setNewColorName(e.target.value)}
             validators={['required', 'isColorNameUnique', 'isColorUnique']}
             errorMessages={[
               'This field is required',
