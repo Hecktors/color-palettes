@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function NewPaletteForm() {
+function NewPaletteForm(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const [newColor, setNewColor] = React.useState('#88f');
@@ -110,11 +110,25 @@ function NewPaletteForm() {
   const handleChange = (e) => {
     setNewName(e.target.value);
   };
+
+  const handleSubmit = () => {
+    let newName = 'New Test Palette';
+    const newPalette = {
+      paletteName: newName,
+      id: newName.toLowerCase().replace(/ /g, '-'),
+      emoji: '🤙',
+      colors: colors,
+    };
+    props.savePalette(newPalette);
+    props.history.push('/');
+  };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position='fixed'
+        color='default'
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
@@ -131,6 +145,9 @@ function NewPaletteForm() {
           </IconButton>
           <Typography variant='h6' noWrap>
             Persistent drawer
+            <Button variant='contained' color='primary' onClick={handleSubmit}>
+              Save Palette
+            </Button>
           </Typography>
         </Toolbar>
       </AppBar>
