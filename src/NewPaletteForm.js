@@ -12,8 +12,9 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Typography from '@material-ui/core/Typography';
 import { ChromePicker } from 'react-color';
 import Button from '@material-ui/core/Button';
-import DraggableColorBox from './DraggableColorBox';
+import DraggableColorBoxList from './DraggableColorBoxList';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import arrayMove from 'array-move';
 
 const drawerWidth = 400;
 
@@ -82,7 +83,15 @@ function NewPaletteForm(props) {
   const [newColorName, setNewColorName] = useState('blue');
   const [colors, setColors] = useState([
     { name: 'blue', color: '#5555ff' },
-    { name: 'red', color: '#ff5555' },
+    { name: 'red2', color: '#ff5551' },
+    { name: 'red3', color: '#ff5552' },
+    { name: 'red4', color: '#ff5553' },
+    { name: 'red5', color: '#ff5554' },
+    { name: 'red6', color: '#ff5555' },
+    { name: 'red7', color: '#ff5556' },
+    { name: 'red8', color: '#ff5557' },
+    { name: 'red9', color: '#ff5558' },
+    { name: 'red0', color: '#ff5559' },
   ]);
   const [newPaletteName, setNewPaletteName] = useState('');
 
@@ -121,9 +130,9 @@ function NewPaletteForm(props) {
   const deleteColor = (name) => {
     setColors(colors.filter((color) => color.name !== name));
   };
-  // const handleChange = (e, fn) => {
-  //   fn(e.target.value);
-  // };
+
+  const onSortEnd = ({ oldIndex, newIndex }) =>
+    setColors(arrayMove(colors, oldIndex, newIndex));
 
   const handleSubmit = () => {
     let paletteName = newPaletteName;
@@ -231,14 +240,12 @@ function NewPaletteForm(props) {
         })}
       >
         <div className={classes.drawerHeader} />
-        {colors.map((color) => (
-          <DraggableColorBox
-            key={color.name}
-            color={color.color}
-            name={color.name}
-            handleClick={() => deleteColor(color.name)}
-          />
-        ))}
+        <DraggableColorBoxList
+          colors={colors}
+          deleteColor={deleteColor}
+          onSortEnd={onSortEnd}
+          axis='xy'
+        />
       </main>
     </div>
   );

@@ -1,6 +1,6 @@
 export default {
   root: {
-    width: '270px',
+    width: '260px',
     backgroundColor: '#fff',
     padding: '0.5rem',
     position: 'relative',
@@ -12,7 +12,7 @@ export default {
     },
   },
   colorBoxes: {
-    height: '150px',
+    height: '140px',
     width: '100%',
     borderRadius: '3px',
     overflow: 'hidden',

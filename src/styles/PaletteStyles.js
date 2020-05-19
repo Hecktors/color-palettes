@@ -5,7 +5,7 @@ export default {
   },
   PaletteColors: {
     height: ' 90%',
-    display: 'flex',
+    // display: 'flex',
     flexWrap: 'wrap',
   },
 };
