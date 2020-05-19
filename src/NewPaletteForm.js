@@ -79,8 +79,11 @@ function NewPaletteForm(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(true);
   const [newColor, setNewColor] = useState('#88f');
-  const [newColorName, setNewColorName] = useState('');
-  const [colors, setColors] = useState([]);
+  const [newColorName, setNewColorName] = useState('blue');
+  const [colors, setColors] = useState([
+    { name: 'blue', color: '#5555ff' },
+    { name: 'red', color: '#ff5555' },
+  ]);
   const [newPaletteName, setNewPaletteName] = useState('');
 
   useEffect(() => {
