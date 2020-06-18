@@ -1,0 +1,72 @@
+{
+  "window.zoomLevel": 0,
+  "editor.tabSize": 2,
+  "editor.fontSize": 18,
+  "[html]": {
+    // "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "editor.wordWrap": "on",
+  "workbench.colorCustomizations": {
+    "editor.wordHighlightBackground": "#a05252",
+    "editor.lineHighlightBackground": "#1f0025",
+    "editor.selectionBackground": "#009439",
+    "editor.selectionHighlightBackground": "#006828"
+  },
+  "terminal.integrated.shell.linux": "/bin/bash",
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "editor.parameterHints.enabled": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.sideBar.location": "left",
+  "extensions.ignoreRecommendations": true,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  // Enable per-language
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[javascriptreact]": {
+    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "beautify.language": {
+    "js": {
+      "type": [
+        "javascript",
+        "json"
+      ],
+      "filename": [
+        ".jshintrc",
+        ".jsbeautifyrc"
+      ]
+      // "ext": ["js", "json"]
+      // ^^ to set extensions to be beautified using the javascript beautifier
+    },
+    "css": [
+      "css",
+      "scss"
+    ],
+    "html": [
+      "htm",
+      "html"
+    ]
+    // ^^ providing just an array sets the VS Code file type
+  },
+  "editor.formatOnSave": true,
+  // "editor.defaultFormatter": "HookyQR.beautify",
+ 
+  // "html.format": true,
+  "beautify.config": {
+    "wrap_line_length": 120
+  },
+  "prettier.printWidth": 120,
+  "editor.renameOnType": true,
+}
