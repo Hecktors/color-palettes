@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import PaletteFormNav from './PaletteFormNav';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
@@ -12,28 +12,12 @@ import DraggableColorBoxList from './DraggableColorBoxList';
 import arrayMove from 'array-move';
 import ColorPickerForm from './ColorPickerForm';
 
+
 const drawerWidth = 400;
 
-const useStyles = makeStyles((theme) => ({
+const styles = theme => ({
   root: {
     display: 'flex',
-  },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
   },
   hide: {
     display: 'none',
@@ -73,27 +57,28 @@ const useStyles = makeStyles((theme) => ({
   title: {
     display: "flex"
   }
-}));
+});
 
 NewPaletteForm.defaultProps = {
   maxColors: 20
 }
 
 function NewPaletteForm(props) {
-  const { maxColors, palettes } = props
-  const classes = useStyles();
+  const { classes, maxColors, palettes } = props
+  // const classes = useStyles();
   const [open, setOpen] = useState(true);
   const [colors, setColors] = useState(props.palettes[0].colors);
   const paletteIsFull = colors.length >= maxColors
-
-
 
   const handleDrawerClose = () => {
     setOpen(false);
   };
 
   const addNewColor = (newColor) => {
+    console.log("colors", colors)
+    console.log("newColor", newColor)
     setColors([...colors, newColor]);
+    // debugger;
   };
 
   const deleteColor = (name) => {
@@ -124,6 +109,7 @@ function NewPaletteForm(props) {
 
     setColors([...colors, { ...randomColor, name: randomColor.name + Math.floor(Math.random() * 100) }]);
   };
+  console.log("colors:", colors)
   return (
     <div className={classes.root}>
       <PaletteFormNav
@@ -183,4 +169,4 @@ function NewPaletteForm(props) {
   );
 }
 
-export default NewPaletteForm;
+export default withStyles(styles, { withTheme: true })(NewPaletteForm);
