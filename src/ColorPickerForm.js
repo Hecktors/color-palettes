@@ -46,7 +46,7 @@ function ColorPickerForm(props) {
       <ValidatorForm onSubmit={handleSubmit}>
         <TextValidator
           className={classes.colorNameInp}
-          placeholder="Color Name"
+          label="Color Name"
           value={newColor.name}
           variant="filled"
           margin="normal"

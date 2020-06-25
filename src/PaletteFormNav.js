@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 import clsx from 'clsx';
@@ -23,6 +23,7 @@ const styles = theme => ({
     }),
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     height: "64px"
   },
   appBarShift: {
@@ -37,12 +38,17 @@ const styles = theme => ({
     marginLeft: 12,
     marginRight: 20
   },
-  navBtns: {}
+  navBtns: {
+    marginRight: "1rem",
+  },
+  navBtn: {
+    margin: "0 0.5rem"
+  }
 });
 
-
 function PaletteFormNav(props) {
-  const { classes, open, palettes, handleSubmit, setOpen } = props
+  const { classes, palettes, handleSubmit, open, setOpen } = props;
+  const [formShowing, setFormShowing] = useState(false);
 
   return (
     <div className={classes.root} >
@@ -69,18 +75,24 @@ function PaletteFormNav(props) {
             </Typography>
         </Toolbar>
         <div className={classes.navBtns}>
-
-          <PaletteDialog palettes={palettes} handleSubmit={handleSubmit} />
           <Link to="/">
-            <Button variant='contained' color='secondary' >Go Back</Button>
+            <Button variant='contained' color='secondary' className={classes.navBtn}>Go Back</Button>
           </Link>
+          <Button variant="contained" color="primary" className={classes.navBtn} onClick={() => setFormShowing(true)}>
+            Save
+      </Button>
         </div>
       </AppBar>
+      {
+        <PaletteDialog
+          palettes={palettes}
+          handleSubmit={handleSubmit}
+          formShowing={formShowing}
+          setFormShowing={setFormShowing}
+        />
+      }
     </div >
   )
 }
 
-export default withStyles(styles, { withTheme: true })(PaletteFormNav)
-
-
-
+export default withStyles(styles, { withTheme: true })(PaletteFormNav);
