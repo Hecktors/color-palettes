@@ -48,7 +48,7 @@ const styles = theme => ({
 
 function PaletteFormNav(props) {
   const { classes, palettes, handleSubmit, open, setOpen } = props;
-  const [formShowing, setFormShowing] = useState(false);
+  const [hideForm, setHideForm] = useState(true);
 
   return (
     <div className={classes.root} >
@@ -78,7 +78,7 @@ function PaletteFormNav(props) {
           <Link to="/">
             <Button variant='contained' color='secondary' className={classes.navBtn}>Go Back</Button>
           </Link>
-          <Button variant="contained" color="primary" className={classes.navBtn} onClick={() => setFormShowing(true)}>
+          <Button variant="contained" color="primary" className={classes.navBtn} onClick={() => setHideForm(false)}>
             Save
       </Button>
         </div>
@@ -87,8 +87,8 @@ function PaletteFormNav(props) {
         <PaletteDialog
           palettes={palettes}
           handleSubmit={handleSubmit}
-          formShowing={formShowing}
-          setFormShowing={setFormShowing}
+          hideForm={hideForm}
+          setHideForm={setHideForm}
         />
       }
     </div >

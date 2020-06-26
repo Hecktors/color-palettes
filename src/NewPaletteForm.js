@@ -19,9 +19,9 @@ const styles = theme => ({
   root: {
     display: 'flex',
   },
-  hide: {
-    display: 'none',
-  },
+  // hide: {
+  //   display: 'none',
+  // },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -32,6 +32,7 @@ const styles = theme => ({
     alignItems: "center   "
   },
   drawerHeader: {
+    width: "100%",
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
@@ -78,7 +79,6 @@ NewPaletteForm.defaultProps = {
 
 function NewPaletteForm(props) {
   const { classes, maxColors, palettes } = props
-  // const classes = useStyles();
   const [open, setOpen] = useState(true);
   const [colors, setColors] = useState(props.palettes[0].colors);
   const paletteIsFull = colors.length >= maxColors
@@ -91,7 +91,6 @@ function NewPaletteForm(props) {
     console.log("colors", colors)
     console.log("newColor", newColor)
     setColors([...colors, newColor]);
-    // debugger;
   };
 
   const deleteColor = (name) => {
@@ -191,3 +190,4 @@ function NewPaletteForm(props) {
 }
 
 export default withStyles(styles, { withTheme: true })(NewPaletteForm);
+// export default withStyles(styles)(NewPaletteForm);
