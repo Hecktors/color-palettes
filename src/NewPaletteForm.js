@@ -100,11 +100,11 @@ function NewPaletteForm(props) {
   const onSortEnd = ({ oldIndex, newIndex }) =>
     setColors(arrayMove(colors, oldIndex, newIndex));
 
-  const handleSubmit = (paletteName) => {
+  const handleSubmit = (paletteName, emoji) => {
     const newPalette = {
       paletteName,
       id: paletteName.toLowerCase().replace(/ /g, '-'),
-      emoji: '🤙',
+      emoji,
       colors: colors,
     };
     props.savePalette(newPalette);
@@ -131,7 +131,6 @@ function NewPaletteForm(props) {
         palettes={palettes}
         handleSubmit={handleSubmit}
         setOpen={() => setOpen(true)}
-
       />
 
       <Drawer
