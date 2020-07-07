@@ -9,7 +9,7 @@ export default {
     display: 'flex',
     alignItems: 'flex-start',
     flexDirection: 'column',
-    flexWrap: 'wrap',
+    // flexWrap: 'wrap',
   },
   nav: {
     width: '100%',

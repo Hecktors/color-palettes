@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { generatePalette } from './colorHelpers';
@@ -9,17 +9,23 @@ import PaletteList from './PaletteList';
 import ShadesPalette from './ShadesPalette';
 
 function App() {
-  const [palettes, setPalettes] = useState(seedColors);
-  // const [colors, setColors] = useState([]);
+  // if saved Palettes get that Palettes, if not, from seedColors file 
+  const savedPalettes = JSON.parse(window.localStorage.getItem('palettes'))
+  const [palettes, setPalettes] = useState(savedPalettes || seedColors);
+
   const findPalette = (id) => palettes.find((color) => color.id === id);
 
   const savePalette = (newPalette) => {
-    // setColors(colors);
     setPalettes([...palettes, newPalette]);
+    window.localStorage.removeItem('emoji-mart.last')
+    window.localStorage.removeItem('emoji-mart.frequently')
   };
-  console.log(palettes);
 
-  // console.log(generatePalette(seedColors[4]));
+  useEffect(() => {
+    window.localStorage.setItem('palettes', JSON.stringify(palettes))
+  }, [palettes])
+
+  console.log(palettes);
 
   return (
     <div className='App'>
