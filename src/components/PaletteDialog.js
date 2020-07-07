@@ -9,8 +9,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart';
 
-
-export default function PaletteDialog({ palettes, handleSubmit, showForm, setShowForm }) {
+function PaletteDialog({ palettes, handleSubmit, showForm, setShowForm }) {
   const [newPaletteName, setNewPaletteName] = useState('');
   const [emoji, setEmoji] = useState('🤙')
   const [stage, setStage] = useState("form")
@@ -82,3 +81,5 @@ export default function PaletteDialog({ palettes, handleSubmit, showForm, setSho
     </div>
   );
 }
+
+export default PaletteDialog;

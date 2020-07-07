@@ -10,12 +10,9 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import PaletteDialog from './PaletteDialog'
-import styles from './styles/PaletteFormNavStyles'
+import styles from '../styles/PaletteFormNavStyles'
 
-
-
-function PaletteFormNav(props) {
-  const { classes, palettes, handleSubmit, open, setOpen } = props;
+function PaletteFormNav({ classes, palettes, handleSubmit, open, setOpen }) {
   const [showForm, setShowForm] = useState(false);
 
   return (

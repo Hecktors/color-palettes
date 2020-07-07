@@ -4,12 +4,13 @@ export default {
     backgroundColor: '#fff',
     padding: '0.5rem',
     position: 'relative',
-    border: '1px solid #999',
+    // border: '1px solid #999',
     borderRadius: '5px',
     overflow: 'hidden',
-    '&:hover': {
-      cursor: 'pointer',
-    },
+    cursor: 'pointer',
+    '&:hover svg': {
+      opacity: 1
+    }
   },
   colorBoxes: {
     height: '140px',
@@ -33,4 +34,18 @@ export default {
     fontSize: '1rem',
   },
   emoji: {},
+  btnDelete: {
+    position: 'absolute',
+    top: '0',
+    right: '0',
+    zIndex: 99,
+    height: '40px',
+    width: '30px',
+    background: '#eb3d30',
+    color: 'white',
+    opacity: 0,
+    transition: "opacity 0.2s ease-in-out"
+    // visibility: 'hidden',
+  }
+
 };

@@ -11,19 +11,16 @@ import Button from '@material-ui/core/Button';
 import DraggableColorBoxList from './DraggableColorBoxList';
 import arrayMove from 'array-move';
 import ColorPickerForm from './ColorPickerForm';
-import styles from './styles/NewPaletteFormStyles'
+import styles from '../styles/NewPaletteFormStyles'
 
 NewPaletteForm.defaultProps = { maxColors: 20 }
 
-function NewPaletteForm(props) {
-  const { classes, maxColors, palettes } = props
+function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) {
   const [open, setOpen] = useState(true);
-  const [colors, setColors] = useState(props.palettes[0].colors);
+  const [colors, setColors] = useState(palettes[0].colors);
   const paletteIsFull = colors.length >= maxColors
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const handleDrawerClose = () => setOpen(false);
 
   const addNewColor = (newColor) => {
     console.log("colors", colors)
@@ -45,8 +42,8 @@ function NewPaletteForm(props) {
       emoji,
       colors: colors,
     };
-    props.savePalette(newPalette);
-    props.history.push('/');
+    savePalette(newPalette);
+    history.push('/');
   };
 
   const clearPalette = () => {

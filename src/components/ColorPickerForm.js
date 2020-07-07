@@ -3,10 +3,9 @@ import { ChromePicker } from 'react-color';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { withStyles } from '@material-ui/core/styles'
-import styles from './styles/ColorPickerFormStyles.js'
+import styles from '../styles/ColorPickerFormStyles.js'
 
-function ColorPickerForm(props) {
-  const { classes, colors, paletteIsFull, addNewColor } = props
+function ColorPickerForm({ classes, colors, paletteIsFull, addNewColor }) {
   const [newColor, setNewColor] = useState({ color: 'teal', name: '' });
 
   ValidatorForm.addValidationRule('isColorNameUnique', (value) =>

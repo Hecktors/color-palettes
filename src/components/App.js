@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { generatePalette } from './colorHelpers';
-import seedColors from './seedColors';
+import { generatePalette } from '../colorHelpers';
+import seedColors from '../seedColors';
 import Palette from './Palette';
 import NewPaletteForm from './NewPaletteForm';
 import PaletteList from './PaletteList';
 import ShadesPalette from './ShadesPalette';
+import { withRouter } from 'react-router-dom'
 
-function App() {
+function App({ history }) {
+
   // if saved Palettes get that Palettes, if not, from seedColors file 
   const savedPalettes = JSON.parse(window.localStorage.getItem('palettes'))
   const [palettes, setPalettes] = useState(savedPalettes || seedColors);
+
+  useEffect(() => {
+    window.localStorage.setItem('palettes', JSON.stringify(palettes))
+  }, [palettes])
+
 
   const findPalette = (id) => palettes.find((color) => color.id === id);
 
@@ -21,11 +27,11 @@ function App() {
     window.localStorage.removeItem('emoji-mart.frequently')
   };
 
-  useEffect(() => {
-    window.localStorage.setItem('palettes', JSON.stringify(palettes))
-  }, [palettes])
-
-  console.log(palettes);
+  const deletePalette = (id) => {
+    const updatedPalettes = palettes.filter(palette => palette.id !== id)
+    setPalettes(updatedPalettes);
+    history.push('/')
+  }
 
   return (
     <div className='App'>
@@ -34,7 +40,7 @@ function App() {
           exact
           path='/palette'
           render={(routeProps) => (
-            <PaletteList palettes={palettes} {...routeProps} />
+            < PaletteList palettes={palettes} deletePalette={deletePalette} {...routeProps} />
           )}
         />
         <Route
@@ -77,4 +83,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);
