@@ -22,7 +22,7 @@ export default theme => ({
     }),
   },
   menuButton: {
-    marginLeft: 12,
+    // marginLeft: 12,
     marginRight: 20
   },
   navBtns: {
