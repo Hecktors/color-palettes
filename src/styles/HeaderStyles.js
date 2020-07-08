@@ -1,7 +1,8 @@
 export default {
   Header: {
-    width: '100%',
+    maxWidth: '100%',
     display: 'flex',
+    flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'flex-start',
     height: '5vh',

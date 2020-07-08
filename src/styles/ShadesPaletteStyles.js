@@ -11,7 +11,7 @@ export default {
   goBack: {
     width: '20%',
     height: '50%',
-    margin: '0 auto',
+    // margin: '0 auto',
     position: 'relative',
     cursor: 'pointer',
     backgroundColor: '#212121',

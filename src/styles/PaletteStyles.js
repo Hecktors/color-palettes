@@ -1,11 +1,11 @@
 export default {
   Palette: {
     height: '100vh',
-    overflow: 'hidden',
+    // overflow: '',
   },
   PaletteColors: {
-    height: ' 90%',
-    // display: 'flex',
+    height: ' 90vh',
+    display: 'flex',
     flexWrap: 'wrap',
   },
 };
