@@ -1,28 +1,26 @@
 import chroma from 'chroma-js';
-import sizes from '../styles/sizes'
+import sizes from './sizes'
 
 export default {
   ColorBox: {
     width: '20%',
     height: (props) => (props.showLink ? '25%' : '50%'),
-    margin: '0 auto',
     display: 'inline-block',
     position: 'relative',
     cursor: 'pointer',
-    marginBottom: '-3.5px',
     '&:hover button': {
       opacity: 1,
     },
     [sizes.down('lg')]: {
-      width: "20%",
-      height: (props) => (props.showLink ? '25%' : '50%'),
+      width: (props) => (props.showLink ? '20%' : '10%'),
+      height: (props) => (props.showLink ? '25%' : '100%'),
     },
     [sizes.down('md')]: {
-      width: "50%",
-      height: (props) => (props.showLink ? '10%' : '20%'),
+      width: (props) => (props.showLink ? '33%' : '10%'),
+      height: (props) => (props.showLink ? '14.28%' : '100%'),
     },
     [sizes.down('xs')]: {
-      width: "100%",
+      width: (props) => (props.showLink ? '100%' : '100%'),
       height: (props) => (props.showLink ? '5%' : '10%'),
     },
 
@@ -53,12 +51,13 @@ export default {
     color: (props) =>
       chroma(props.color).luminance() >= 0.7 ? 'rgba(0,0,0,0.6)' : 'white',
     width: '100px',
+    maxWidth: '100%',
     height: '30px',
     position: 'absolute',
     display: 'inline-block',
     top: '50%',
     left: '50%',
-    marginLeft: '-50px',
+    transform: 'translateX(-50%)',
     marginTop: '-15px',
     textAlign: 'center',
     outline: 'none',
@@ -105,7 +104,6 @@ export default {
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
-    fontSize: '4rem',
     transform: 'scale(0.1)',
     opacity: '0',
     color: 'white',
@@ -118,6 +116,10 @@ export default {
       marginBottom: '0',
       padding: '1rem',
       textTransform: 'uppercase',
+      fontSize: '6rem',
+      [sizes.down("sm")]: {
+        fontSize: '4rem'
+      }
     },
     '& p': {
       fontSize: '2rem',

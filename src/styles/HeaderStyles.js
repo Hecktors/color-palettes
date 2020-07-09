@@ -5,7 +5,7 @@ export default {
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    height: '5vh',
+    height: '5%',
   },
   logo: {
     marginRight: '15px',

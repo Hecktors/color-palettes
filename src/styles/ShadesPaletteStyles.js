@@ -1,3 +1,5 @@
+import sizes from './sizes'
+
 export default {
   Palette: {
     height: '100vh',
@@ -11,7 +13,6 @@ export default {
   goBack: {
     width: '20%',
     height: '50%',
-    // margin: '0 auto',
     position: 'relative',
     cursor: 'pointer',
     backgroundColor: '#212121',
@@ -20,7 +21,6 @@ export default {
     alignItems: 'center',
     '& a': {
       width: '100px',
-      height: '30px',
       textAlign: 'center',
       outline: 'none',
       fontSize: '1rem',
@@ -30,5 +30,13 @@ export default {
       backgroundColor: 'rgba(255, 255, 255, 0.3)',
       color: '#fff',
     },
+    [sizes.down("lg")]: {
+      width: "10%",
+      height: "100%"
+    },
+    [sizes.down("xs")]: {
+      width: "100%",
+      height: "10%"
+    }
   },
 };

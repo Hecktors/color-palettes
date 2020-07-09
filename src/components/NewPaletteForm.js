@@ -28,8 +28,8 @@ function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) 
     setColors([...colors, newColor]);
   };
 
-  const deleteColor = (name) => {
-    setColors(colors.filter((color) => color.name !== name));
+  const deleteColor = (colorName) => {
+    setColors(colors.filter((color) => color.name !== colorName));
   };
 
   const onSortEnd = ({ oldIndex, newIndex }) =>
@@ -56,12 +56,10 @@ function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) 
 
     setColors([...colors, { ...randomColor, name: randomColor.name + Math.floor(Math.random() * 100) }]);
   };
-  console.log("colors:", colors)
   return (
     <div className={classes.root}>
       <PaletteFormNav
         open={open}
-        // classes={classes}
         colors={colors}
         palettes={palettes}
         handleSubmit={handleSubmit}
@@ -117,6 +115,7 @@ function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) 
           colors={colors}
           deleteColor={deleteColor}
           onSortEnd={onSortEnd}
+          pressDelay={200}
           axis='xy'
         />
       </main>
@@ -125,4 +124,3 @@ function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) 
 }
 
 export default withStyles(styles, { withTheme: true })(NewPaletteForm);
-// export default withStyles(styles)(NewPaletteForm);

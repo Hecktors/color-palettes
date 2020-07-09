@@ -5,7 +5,6 @@ import Footer from './PaletteFooter';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 import styles from '../styles/ShadesPaletteStyles';
-import clsx from 'clsx';
 
 function ShadesPalette({ palette, classes, colorId, palette: { paletteName, emoji, id } }) {
   const [format, setFormat] = useState('hex')
@@ -50,6 +49,5 @@ function ShadesPalette({ palette, classes, colorId, palette: { paletteName, emoj
     </div>
   );
 }
-
 
 export default withStyles(styles)(ShadesPalette);
