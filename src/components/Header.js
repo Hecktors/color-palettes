@@ -9,7 +9,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import styles from '../styles/HeaderStyles';
 
-function Header({ level, changeLevel, showSlider, changeFormat, classes }) {
+function Header({ paletteName, emoji, level, changeLevel, showSlider, changeFormat, classes }) {
   const [format, setFormat] = useState('hex')
   const [showSnackbar, setShowSnackbar] = useState(false)
 
@@ -25,10 +25,10 @@ function Header({ level, changeLevel, showSlider, changeFormat, classes }) {
   return (
     <header className={classes.Header}>
       <div className={classes.logo}>
-        <Link to='/palette'>color palette</Link>
+        <Link to='/palette'>{paletteName} {emoji}</Link>
       </div>
       {showSlider && (
-        <div>
+        <div className={classes.sliderContainer}>
           <span>Level: {level}</span>
           <div className={classes.slider}>
             <Slider
@@ -41,7 +41,7 @@ function Header({ level, changeLevel, showSlider, changeFormat, classes }) {
           </div>
         </div>
       )}
-      <div className='select-container'>
+      <div className={classes.selectContainer}>
         <Select onChange={handleChange} value={format}>
           <MenuItem value='hex'>HEX - #ffffff</MenuItem>
           <MenuItem value='rgb'>RGB - rgb(255, 255, 255)</MenuItem>

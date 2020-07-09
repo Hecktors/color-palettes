@@ -83,7 +83,7 @@ function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) 
         </div>
         <Divider />
         <div className={classes.container}>
-          <Typography variant='h4' gutterBottom>Design Your Palette</Typography>
+          <Typography className={classes.title} variant='h4' gutterBottom>Design Your Palette</Typography>
           <div className={classes.buttons}>
             <Button
               className={classes.button}
@@ -115,7 +115,7 @@ function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) 
           colors={colors}
           deleteColor={deleteColor}
           onSortEnd={onSortEnd}
-          pressDelay={200}
+          distance={1}
           axis='xy'
         />
       </main>

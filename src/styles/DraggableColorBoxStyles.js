@@ -1,3 +1,5 @@
+import sizes from './sizes';
+
 export default {
   root: {
     width: '20%',
@@ -9,6 +11,22 @@ export default {
     marginBottom: '-5px',
     '&:hover svg': {
       opacity: 1,
+    },
+    [sizes.down('lg')]: {
+      width: '25%',
+      height: '20%'
+    },
+    [sizes.down('md')]: {
+      width: '33.33%',
+      height: '14.28%'
+    },
+    [sizes.down('sm')]: {
+      width: '50%',
+      height: '10%'
+    },
+    [sizes.down('xs')]: {
+      width: '100%',
+      height: '5%'
     },
   },
   btnDelete: {

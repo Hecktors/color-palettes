@@ -25,7 +25,7 @@ function PaletteFormNav({ classes, palettes, handleSubmit, open, setOpen }) {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
           <IconButton
             color='inherit'
             aria-label='open drawer'

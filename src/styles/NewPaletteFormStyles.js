@@ -1,4 +1,6 @@
 import { DRAWER_WIDTH } from '../contansts';
+import sizes from './sizes';
+
 export default theme => ({
   root: {
     display: 'flex',
@@ -46,10 +48,20 @@ export default theme => ({
     alignItems: "center",
     height: "100%"
   },
+  title: {
+    fontSize: '2rem',
+    [sizes.down('xs')]: {
+      fontSize: '1.5rem'
+    }
+  },
   buttons: {
-    width: "100%"
+    width: "100%",
   },
   button: {
-    width: "50%"
-  }
+    fontSize: "0.8rem",
+    width: "50%",
+    padding: '0.2rem 0',
+    [sizes.down('xs')]: {
+    },
+  },
 });

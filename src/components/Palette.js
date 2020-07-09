@@ -27,6 +27,8 @@ function Palette({
   return (
     <div className={classes.Palette}>
       <Header
+        paletteName={paletteName}
+        emoji={emoji}
         changeLevel={setLevel}
         changeFormat={() => setFormat(format)}
         level={level}
@@ -34,7 +36,7 @@ function Palette({
         showSlider
       />
       <div className={classes.PaletteColors}>{colorBoxes}</div>
-      <Footer paletteName={paletteName} emoji={emoji} />
+      {/* <Footer paletteName={paletteName} emoji={emoji} /> */}
     </div>
   );
 }

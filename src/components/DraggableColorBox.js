@@ -6,7 +6,7 @@ import styles from '../styles/DraggableColorBoxStyles'
 
 const DraggableColorBox = SortableElement(({ handleDelete, classes, color, name }) => {
   return (
-    <div className={classes.root} style={{ backgroundColor: color }}>
+    <div className={classes.root} style={{ backgroundColor: color }} >
       <DeleteIcon onClick={handleDelete} className={classes.btnDelete} />
       <div className={classes.boxContent}>
         <span>{name}</span>

@@ -1,28 +1,49 @@
+import sizes from './sizes'
+
 export default {
   Header: {
     maxWidth: '100%',
+    overflow: 'hidden',
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    height: '5%',
+    justifyContent: 'space-between',
+    height: '10%',
+    fontSize: '18px',
+    [sizes.down('xs')]: {
+      fontSize: '10px',
+    }
   },
   logo: {
-    marginRight: '15px',
-    padding: ' 0 13px',
-    fontSize: '22px',
-    backgroundColor: '#eceff1',
+    padding: ' 0 10px',
+    fontSize: '20px',
+    // backgroundColor: '#eceff1',
     fontFamily: "'Roboto', sans-serif",
     height: '100%',
     display: 'flex',
     alignItems: 'center',
+    [sizes.down('sm')]: {
+      fontSize: '12px',
+      padding: ' 0 5px',
+      height: 'auto',
+      // backgroundColor: 'transparent'
+    },
     '& a': {
       textDecoration: 'none',
       color: '#000',
     },
   },
+  sliderContainer: {
+    minWidth: '40%',
+    paddingLeft: '5px',
+    [sizes.down('xs')]: {
+      order: 1,
+      width: '100%',
+      paddingBottom: '10px'
+    },
+  },
   slider: {
-    width: '340px',
+    width: '100%',
     margin: '0 10px',
     display: 'inline-block',
     '& rc-slider-track': {
@@ -43,7 +64,10 @@ export default {
     },
   },
   selectContainer: {
-    marginLeft: 'auto',
-    marginRight: '1rem',
+    // paddingRight: '6px',
+    textAlign: 'right',
+    // minWidth: '30%',
+    // marginLeft: 'auto',
+    // marginRight: '1rem',
   },
 };
