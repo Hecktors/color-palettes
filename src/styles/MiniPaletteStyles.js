@@ -1,42 +1,42 @@
 export default {
   root: {
-    width: '260px',
-    backgroundColor: '#fff',
+    border: '1px solid #fffefe4a',
     padding: '0.5rem',
     position: 'relative',
-    // border: '1px solid #999',
-    borderRadius: '5px',
+    borderRadius: '2px',
     overflow: 'hidden',
     cursor: 'pointer',
     '&:hover svg': {
       opacity: 1
-    }
+    },
   },
   colorBoxes: {
-    height: '140px',
-    width: '100%',
+    height: '130px',
     borderRadius: '3px',
-    overflow: 'hidden',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
   },
   colorBox: {
     display: 'inline-block',
     width: '20%',
     height: '25%',
-    margin: '0 auto',
-    position: 'relative',
-    marginBottom: '-3.5px',
+    position: 'relative'
+
   },
   title: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingTop: '0.5rem',
+    paddingBottom: '0.3rem',
     fontSize: '1rem',
+    color: 'white'
   },
   emoji: {},
   btnDelete: {
     position: 'absolute',
-    top: '0',
+    bottom: '0',
     right: '0',
     zIndex: 99,
     height: '40px',
@@ -45,7 +45,5 @@ export default {
     color: 'white',
     opacity: 0,
     transition: "opacity 0.2s ease-in-out"
-    // visibility: 'hidden',
   }
-
 };
