@@ -1,6 +1,6 @@
 export default {
   root: {
-    border: '1px solid #fffefe4a',
+    // border: '1px solid #fffefe4a',
     padding: '0.5rem',
     position: 'relative',
     borderRadius: '2px',
@@ -29,9 +29,9 @@ export default {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingBottom: '0.3rem',
-    fontSize: '1rem',
-    color: 'white'
+    paddingBottom: '0.2rem',
+    fontSize: '0.8rem',
+    // color: 'white'
   },
   emoji: {},
   btnDelete: {

@@ -21,7 +21,7 @@ function PaletteList({ classes, palettes, history, deletePalette }) {
     <div className={classes.root}>
       <div className={classes.container}>
         <nav className={classes.nav}>
-          <h1>Choose A Color Palette</h1>
+          <h1>Color Palettes</h1>
           <Link to='/palette/new'>Create new Palette</Link>
         </nav>
         <div className={classes.palettes}>{miniPalettes}</div>

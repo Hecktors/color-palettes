@@ -1,11 +1,16 @@
 import sizes from './sizes';
+import bg from './bg.svg';
+
 export default {
   root: {
-    backgroundColor: '#030f34',
     height: '100vh',
+    overflow: 'scroll',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    backgroundColor: '#030f34',
+    backgroundImage: `url(${bg})`,
+    /* background by SVGBackgrounds.com */
   },
   container: {
     width: '50%',
@@ -25,7 +30,8 @@ export default {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    color: '#fff',
+    marginBottom: '3rem',
+    // color: '#fff',
     [sizes.down('sm')]: {
       flexDirection: 'column',
       justifyContent: 'center',
@@ -37,7 +43,7 @@ export default {
       },
     },
     '& a': {
-      color: '#fff',
+      // color: '#fff',
       textDecoration: 'underline',
       fontSize: '0.8rem'
     },
@@ -53,7 +59,7 @@ export default {
     },
     [sizes.down('xs')]: {
       gridTemplateColumns: 'repeat(1 , 100%)',
-      gridGap: '2%',
+      gridGap: '1%',
     },
   }
 };

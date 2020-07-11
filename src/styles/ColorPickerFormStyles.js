@@ -10,6 +10,7 @@ export default {
     fontSize: "2rem"
   },
   colorNameInp: {
+    backgroundColor: '#fff',
     width: "100%",
     height: "70px",
   }

@@ -1,8 +1,10 @@
 import { DRAWER_WIDTH } from '../contansts';
 import sizes from './sizes';
+import bg from './bg.svg'
 
 export default theme => ({
   root: {
+    height: '100vh',
     display: 'flex',
   },
   drawer: {
@@ -11,8 +13,13 @@ export default theme => ({
   },
   drawerPaper: {
     width: DRAWER_WIDTH,
+    height: '100%',
     display: "flex",
-    alignItems: "center   "
+    alignItems: "center",
+    backgroundColor: '#030f34',
+    backgroundImage: `url(${bg})`,
+    /* background by SVGBackgrounds.com */
+    color: 'var(--main-color)'
   },
   drawerHeader: {
     width: "100%",
@@ -22,6 +29,9 @@ export default theme => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
+    '& svg': {
+      color: 'var(--main-color)'
+    },
   },
   content: {
     height: 'calc(100vh - 64px)',
@@ -46,7 +56,7 @@ export default theme => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    height: "100%"
+    height: "100%",
   },
   title: {
     fontSize: '2rem',
