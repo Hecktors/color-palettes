@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ColorBox from './ColorBox';
 import { v4 as uuid } from 'uuid';
 import Header from './Header';
-import Footer from './PaletteFooter';
 import { withStyles } from '@material-ui/styles';
 import styles from '../styles/PaletteStyles';
 

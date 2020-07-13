@@ -51,8 +51,10 @@ function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) 
   };
 
   const generateRandomColor = () => {
+    console.log("palettes", palettes)
     const allColors = palettes.map((palette) => colors).flat();
     const randomColor = allColors[Math.floor(Math.random() * allColors.length)];
+    console.log("randomColor", randomColor)
 
     setColors([...colors, { ...randomColor, name: randomColor.name + Math.floor(Math.random() * 100) }]);
   };

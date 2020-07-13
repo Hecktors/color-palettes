@@ -2,6 +2,15 @@ import sizes from './sizes';
 import bg from './bg.svg';
 
 export default {
+  '@global': {
+    '.fade-exit': {
+      opacity: 1,
+    },
+    '.fade-exit-active': {
+      opacity: 0,
+      transition: 'opacity 0.5s ease-out'
+    }
+  },
   root: {
     height: '100vh',
     overflow: 'scroll',
@@ -12,6 +21,7 @@ export default {
     backgroundImage: `url(${bg})`,
     /* background by SVGBackgrounds.com */
   },
+
   container: {
     width: '50%',
     display: 'flex',
@@ -20,8 +30,11 @@ export default {
     [sizes.down('xl')]: {
       width: '80%'
     },
+    [sizes.down('md')]: {
+      // width: '90%'
+    },
     [sizes.down('xs')]: {
-      width: '75%'
+      width: '100%'
     },
   },
   nav: {
@@ -31,11 +44,12 @@ export default {
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: '3rem',
-    // color: '#fff',
     [sizes.down('sm')]: {
-      flexDirection: 'column',
-      justifyContent: 'center',
-      height: '60px'
+      padding: '1rem 2rem',
+      marginBottom: '2rem',
+      // flexDirection: 'column',
+      // justifyContent: 'center',
+      // height: '60px'
     },
     '& h1': {
       [sizes.down('sm')]: {
@@ -43,7 +57,6 @@ export default {
       },
     },
     '& a': {
-      // color: '#fff',
       textDecoration: 'underline',
       fontSize: '0.8rem'
     },
@@ -52,14 +65,17 @@ export default {
     boxSizing: 'border-box',
     width: '100%',
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 30%)',
-    gridGap: '5%',
+    gridTemplateColumns: 'repeat(3, 28.666%)',
+    gridGap: '7%',
+    // [sizes.down('md')]: {
+    // },
     [sizes.down('md')]: {
-      gridTemplateColumns: 'repeat(2, 47.5%)',
+      gridTemplateColumns: 'repeat(2, 49%)',
+      gridGap: '2%',
     },
     [sizes.down('xs')]: {
       gridTemplateColumns: 'repeat(1 , 100%)',
       gridGap: '1%',
     },
   }
-};
+}

@@ -20,12 +20,14 @@ function MiniPalette({ classes, paletteName, paletteId, emoji, colors, handleCli
 
   return (
     <div className={classes.root} onClick={handleClick}>
-      <DeleteIcon className={classes.btnDelete} onClick={handleDelete}>Delete Palette</DeleteIcon>
       <h5 className={classes.title}>
         {paletteName}
         <span className={classes.emoji}>{emoji}</span>
       </h5>
-      <div className={classes.colorBoxes}>{colorBoxes}</div>
+      <div className={classes.colorBoxes}>
+        <DeleteIcon className={classes.btnDelete} onClick={handleDelete}>Delete Palette</DeleteIcon>
+        {colorBoxes}
+      </div>
     </div >
   );
 }
