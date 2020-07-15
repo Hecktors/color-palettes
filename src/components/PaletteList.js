@@ -1,28 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MiniPalette from './MiniPalette';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { withStyles } from '@material-ui/styles';
 import styles from '../styles/PaletteListStyles';
+import Avatar from '@material-ui/core/Avatar';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemText from '@material-ui/core/ListItemText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
+import blue from '@material-ui/core/colors/blue';
+import red from '@material-ui/core/colors/red';
 
 function PaletteList({ classes, palettes, history, deletePalette }) {
+  const [paletteIdToDelete, setPaletteIdToDelete] = useState(null)
 
-  const miniPalettes = palettes.map((palette) => (
+  const handleOpenDialog = (id) => setPaletteIdToDelete(id);
+  const handleDelete = () => deletePalette(paletteIdToDelete);
+  const handleCancel = () => setPaletteIdToDelete(null);
+  const goToPalette = (id) => history.push(`/palette/${id}`);
+
+  const miniPalettes = palettes.map((palette, id) => (
     <CSSTransition
-      key={palette.id}
+      key={id}
+      timeout={5000}
       classNames="fade"
-      timeout={2000}
+      in={false}
     >
       <MiniPalette
         {...palette}
         key={palette.id}
-        handleClick={() => goToRoute(palette.id)}
-        deletePalette={() => deletePalette(palette.id)}
+        handleClick={() => goToPalette(palette.id)}
+        openDialog={() => handleOpenDialog(palette.id)}
       />
     </CSSTransition>
   ));
-
-  const goToRoute = (id) => history.push(`/palette/${id}`);
 
   return (
     <div className={classes.root}>
@@ -31,12 +47,31 @@ function PaletteList({ classes, palettes, history, deletePalette }) {
           <h1>Color Palettes</h1>
           <Link to='/palette/new'>Create new Palette</Link>
         </nav>
-        {/* <div className={classes.palettes}> */}
         <TransitionGroup className={classes.palettes}>
           {miniPalettes}
         </TransitionGroup>
-        {/* </div> */}
       </div>
+      <Dialog open={paletteIdToDelete} aria-labelledby="delete-dialog-title">
+        <DialogTitle id="delete-dialog-titile">Delete Palette?</DialogTitle>
+        <List>
+          <ListItem button onClick={handleDelete}>
+            <ListItemAvatar>
+              <Avatar style={{ background: blue[100], color: blue[600] }}>
+                <CheckIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Delete" />
+          </ListItem>
+          <ListItem button onClick={handleCancel}>
+            <ListItemAvatar>
+              <Avatar style={{ background: red[100], color: red[600] }}>
+                <CloseIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Cancel" />
+          </ListItem>
+        </List>
+      </Dialog>
     </div >
   );
 }

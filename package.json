@@ -22,7 +22,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.3.4",
     "react-sortable-hoc": "^1.11.0",
-    "react-transition-group": "2.7.0",
+    "react-transition-group": "^4.4.1",
     "uuid": "^7.0.3"
   },
   "scripts": {

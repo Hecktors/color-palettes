@@ -8,7 +8,6 @@ export default {
     border: '1px solid #5f54fb4a',
     padding: '1rem',
     background: '#1a1a4d',
-    borderRadius: '2px',
     position: 'relative',
     borderRadius: '2px',
     cursor: 'pointer',
