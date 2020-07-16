@@ -26,11 +26,16 @@ function PaletteDialog({ palettes, handleSubmit, showForm, setShowForm }) {
 
   const handleClose = () => {
     setShowForm(false);
-    setStage('form')
-    setNewPaletteName('')
+    setStage('form');
+    setNewPaletteName('');
   };
 
-  const handleContinue = () => setStage("emoji")
+  const handleContinue = () => setStage("emoji");
+
+  const handleSave = () => {
+    handleSubmit(newPaletteName, emoji)
+    setShowForm(false);
+  }
 
   return (
     <div>
@@ -41,7 +46,7 @@ function PaletteDialog({ palettes, handleSubmit, showForm, setShowForm }) {
         <Picker onClick={(emoji) => setEmoji(emoji.native)} />
         <DialogActions>
           <Button onClick={handleClose} color="primary">Cancel</Button>
-          <Button variant='contained' color='primary' type='button' onClick={() => handleSubmit(newPaletteName, emoji)}>
+          <Button variant='contained' color='primary' type='button' onClick={handleSave}>
             Save Palette
               </Button>
         </DialogActions>

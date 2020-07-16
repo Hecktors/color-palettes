@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import MiniPalette from './MiniPalette';
 import { withStyles } from '@material-ui/styles';
 import styles from '../styles/PaletteListStyles';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Avatar from '@material-ui/core/Avatar';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -20,14 +20,14 @@ function PaletteList({ classes, palettes, history, deletePalette }) {
   const [paletteIdToDelete, setPaletteIdToDelete] = useState(false)
 
   const handleOpenDialog = (id) => setPaletteIdToDelete(id);
-  const handleDelete = () => deletePalette(paletteIdToDelete);
+  const handleDelete = () => deletePalette(paletteIdToDelete, history);
   const handleCancel = () => setPaletteIdToDelete(null);
   const goToPalette = (id) => history.push(`/palette/${id}`);
 
   const miniPalettes = palettes.map((palette, id) => (
     <CSSTransition
       key={id}
-      timeout={5000}
+      timeout={500}
       classNames="fade"
       in={false}
     >

@@ -8,17 +8,18 @@ export default {
     },
     '.fade-exit-active': {
       opacity: 0,
-      transition: 'opacity 0.5s ease-out'
     }
   },
   root: {
+    color: 'white',
     height: '100vh',
-    overflow: 'scroll',
+    overflowY: 'scroll',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
     backgroundColor: '#030f34',
     backgroundImage: `url(${bg})`,
+    transition: 'opacity 0.5s ease-out'
     /* background by SVGBackgrounds.com */
   },
 
@@ -29,9 +30,6 @@ export default {
     flexWrap: 'wrap',
     [sizes.down('xl')]: {
       width: '80%'
-    },
-    [sizes.down('md')]: {
-      // width: '90%'
     },
     [sizes.down('xs')]: {
       width: '100%'
@@ -47,13 +45,10 @@ export default {
     [sizes.down('sm')]: {
       padding: '1rem 2rem',
       marginBottom: '2rem',
-      // flexDirection: 'column',
-      // justifyContent: 'center',
-      // height: '60px'
     },
     '& h1': {
       [sizes.down('sm')]: {
-        fontSize: '1rem',
+        fontSize: '1em',
       },
     },
     '& a': {

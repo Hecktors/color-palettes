@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { generatePalette } from '../colorHelpers';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import seedColors from '../seedColors';
+import Page from './Page';
 import Palette from './Palette';
 import NewPaletteForm from './NewPaletteForm';
 import PaletteList from './PaletteList';
 import ShadesPalette from './ShadesPalette';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 function App({ history }) {
 
@@ -28,7 +28,7 @@ function App({ history }) {
     window.localStorage.removeItem('emoji-mart.frequently')
   };
 
-  const deletePalette = (id) => {
+  const deletePalette = (id, history) => {
     const updatedPalettes = palettes.filter(palette => palette.id !== id)
     setPalettes(updatedPalettes);
     history.push('/')
@@ -38,61 +38,61 @@ function App({ history }) {
     <div className='App'>
       <Route render={({ location }) => (
         <TransitionGroup>
-          <CSSTransition key={location.key} classNames='fade' timeout={500}>
+          <CSSTransition key={location.key} classNames='page' timeout={500}>
             <Switch location={location}>
               <Route
                 exact
                 path='/palette'
                 render={(routeProps) => (
-                  <div className='page'>
+                  <Page>
                     <PaletteList palettes={palettes} deletePalette={deletePalette} {...routeProps} />
-                  </div>
+                  </Page>
                 )}
               />
               <Route
                 exact
                 path='/palette/new'
                 render={(routeProps) => (
-                  <div className='page'>
+                  <Page>
                     <NewPaletteForm
                       {...routeProps}
                       savePalette={savePalette}
                       palettes={palettes}
                     />
-                  </div>
+                  </Page>
                 )}
               />
               <Route
                 exact
                 path={'/palette/:paletteId'}
                 render={(routeProps) => (
-                  <div className='page'>
+                  <Page>
                     <Palette
                       palette={generatePalette(
                         findPalette(routeProps.match.params.paletteId)
                       )}
                     />
-                  </div>
+                  </Page>
                 )}
               />
               <Route
                 exact
                 path='/palette/:paletteId/:colorId'
                 render={(routeProps) => (
-                  <div className='page'>
+                  <Page>
                     <ShadesPalette
                       colorId={routeProps.match.params.colorId}
                       palette={generatePalette(
                         findPalette(routeProps.match.params.paletteId)
                       )}
                     />
-                  </div>
+                  </Page>
                 )}
               />
               <Route render={() => (
-                <div className='page'>
+                <Page>
                   <Redirect to='/palette' />
-                </div>
+                </Page>
               )} />
             </Switch>
           </CSSTransition>
