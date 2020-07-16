@@ -19,6 +19,7 @@ NewPaletteForm.defaultProps = { maxColors: 20 }
 function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) {
   const [open, setOpen] = useState(true);
   const [colors, setColors] = useState(seedColors[0].colors);
+  // const [colors, setColors] = useState([]);
   const paletteIsFull = colors.length >= maxColors
 
   const handleDrawerClose = () => setOpen(false);
@@ -52,13 +53,14 @@ function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) 
   };
 
   const generateRandomColor = () => {
-    console.log("palettes", palettes)
-    const allColors = palettes.map((palette) => colors).flat();
+    const allColors = palettes.map((palette) => palette.colors.map(color => color)).flat();
     const randomColor = allColors[Math.floor(Math.random() * allColors.length)];
-    console.log("randomColor", randomColor)
-
-    setColors([...colors, { ...randomColor, name: randomColor.name + Math.floor(Math.random() * 100) }]);
+    colors.map(color => console.log(color.name))
+    colors.some(color => color.name === randomColor.name)
+      ? generateRandomColor()
+      : setColors([...colors, { ...randomColor, name: randomColor.name }]);
   };
+
   return (
     <div className={classes.root}>
       <PaletteFormNav

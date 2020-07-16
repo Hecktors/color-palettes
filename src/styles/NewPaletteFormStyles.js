@@ -23,6 +23,7 @@ export default theme => ({
   },
   drawerHeader: {
     width: "100%",
+    height: '64px',
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),

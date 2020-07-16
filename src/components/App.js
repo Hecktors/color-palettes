@@ -90,11 +90,12 @@ function App({ history }) {
                   </Page>
                 )}
               />
-              <Route render={() => (
-                <Page>
-                  <Redirect to='/palette' />
-                </Page>
-              )} />
+              <Route
+                render={() => (
+                  <Page>
+                    <Redirect to='/palette' />
+                  </Page>
+                )} />
             </Switch>
           </CSSTransition>
         </TransitionGroup>
