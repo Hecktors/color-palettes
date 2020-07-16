@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { generatePalette } from '../colorHelpers';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import seedColors from '../seedColors';
+import { generatePalette } from '../colorHelpers';
 import Page from './Page';
 import Palette from './Palette';
 import NewPaletteForm from './NewPaletteForm';

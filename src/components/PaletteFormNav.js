@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { withStyles } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
+import styles from '../styles/PaletteFormNavStyles';
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,8 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import PaletteDialog from './PaletteDialog'
-import styles from '../styles/PaletteFormNavStyles'
+import PaletteDialog from './PaletteDialog';
 
 function PaletteFormNav({ classes, palettes, handleSubmit, open, setOpen }) {
   const [showForm, setShowForm] = useState(false);
@@ -33,13 +33,11 @@ function PaletteFormNav({ classes, palettes, handleSubmit, open, setOpen }) {
             edge='start'
             className={clsx(classes.menuButton, open)}
           >
-            {!open &&
-              < ChevronRightIcon />
-            }
+            {!open && < ChevronRightIcon />}
           </IconButton>
           <Typography variant='h6' noWrap className={clsx(classes.title)}>
             Create A Palette
-            </Typography>
+          </Typography>
         </Toolbar>
         <div className={classes.navBtns}>
           <Link to="/">
@@ -47,7 +45,7 @@ function PaletteFormNav({ classes, palettes, handleSubmit, open, setOpen }) {
           </Link>
           <Button variant="contained" color="primary" className={classes.navBtn} onClick={() => setShowForm(true)}>
             Save
-      </Button>
+          </Button>
         </div>
       </AppBar>
       {
@@ -59,7 +57,7 @@ function PaletteFormNav({ classes, palettes, handleSubmit, open, setOpen }) {
         />
       }
     </div >
-  )
+  );
 }
 
 export default withStyles(styles, { withTheme: true })(PaletteFormNav);

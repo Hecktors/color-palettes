@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
-import PaletteFormNav from './PaletteFormNav';
+import styles from '../styles/NewPaletteFormStyles'
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import DraggableColorBoxList from './DraggableColorBoxList';
 import arrayMove from 'array-move';
+import DraggableColorBoxList from './DraggableColorBoxList';
+import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
-import styles from '../styles/NewPaletteFormStyles'
+import seedColors from '../seedColors';
 
 NewPaletteForm.defaultProps = { maxColors: 20 }
 
 function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) {
   const [open, setOpen] = useState(true);
-  const [colors, setColors] = useState(palettes[0].colors);
+  const [colors, setColors] = useState(seedColors[0].colors);
   const paletteIsFull = colors.length >= maxColors
 
   const handleDrawerClose = () => setOpen(false);

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import 'emoji-mart/css/emoji-mart.css';
+import { Picker } from 'emoji-mart';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import 'emoji-mart/css/emoji-mart.css'
-import { Picker } from 'emoji-mart';
 
 function PaletteDialog({ palettes, handleSubmit, showForm, setShowForm }) {
   const [newPaletteName, setNewPaletteName] = useState('');
@@ -39,10 +39,8 @@ function PaletteDialog({ palettes, handleSubmit, showForm, setShowForm }) {
 
   return (
     <div>
-
       <Dialog open={showForm && stage === "emoji"} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Choose a Emoji</DialogTitle>
-
         <Picker onClick={(emoji) => setEmoji(emoji.native)} />
         <DialogActions>
           <Button onClick={handleClose} color="primary">Cancel</Button>
@@ -51,7 +49,6 @@ function PaletteDialog({ palettes, handleSubmit, showForm, setShowForm }) {
               </Button>
         </DialogActions>
       </Dialog>
-
       <Dialog open={showForm && stage === "form"} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
         <ValidatorForm onSubmit={handleContinue}>
@@ -82,7 +79,6 @@ function PaletteDialog({ palettes, handleSubmit, showForm, setShowForm }) {
           </DialogActions>
         </ValidatorForm>
       </Dialog>
-
     </div>
   );
 }

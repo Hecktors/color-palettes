@@ -1,3 +1,4 @@
+import chroma from 'chroma-js';
 import sizes from './sizes';
 
 export default {
@@ -42,19 +43,17 @@ export default {
     transition: "opacity 0.2s ease-in-out"
   },
   boxContent: {
+    color: (props) =>
+      chroma(props.color).luminance() <= 0.08 ? 'white' : 'black',
     position: 'absolute',
     width: '100%',
     left: '0px',
     bottom: '0px',
     padding: '10px',
-    color: '#212121',
     letterSpacing: '1px',
     textTransform: 'uppercase',
     fontSize: '12px',
     display: 'flex',
     justifyContent: 'space-between',
   },
-  // deleteIcon: {
-  //   transition: 'all 0.2s ease-in-out',
-  // },
 };

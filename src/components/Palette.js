@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import ColorBox from './ColorBox';
 import { v4 as uuid } from 'uuid';
-import Header from './Header';
 import { withStyles } from '@material-ui/styles';
 import styles from '../styles/PaletteStyles';
+import Header from './Header';
+import ColorBox from './ColorBox';
 
 function Palette({
   palette: { colors, paletteName, id, emoji },
@@ -35,7 +35,6 @@ function Palette({
         showSlider
       />
       <div className={classes.PaletteColors}>{colorBoxes}</div>
-      {/* <Footer paletteName={paletteName} emoji={emoji} /> */}
     </div>
   );
 }

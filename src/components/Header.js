@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import SimpleSnackbar from './SimpleSnackbar';
 import Slider from 'rc-slider';
+import SimpleSnackbar from './SimpleSnackbar';
 
 import 'rc-slider/assets/index.css';
 import styles from '../styles/HeaderStyles';

@@ -12,6 +12,6 @@ export default {
   colorNameInp: {
     backgroundColor: '#fff',
     width: "100%",
-    height: "70px",
+    height: "80px",
   }
 }
