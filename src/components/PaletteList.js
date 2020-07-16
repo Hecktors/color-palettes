@@ -16,12 +16,12 @@ import CloseIcon from '@material-ui/icons/Close';
 import blue from '@material-ui/core/colors/blue';
 import red from '@material-ui/core/colors/red';
 
-function PaletteList({ classes, palettes, history, deletePalette }) {
-  const [paletteIdToDelete, setPaletteIdToDelete] = useState(false)
+const PaletteList = React.memo(({ classes, palettes, history, deletePalette }) => {
+  const [paletteIdToDelete, setPaletteIdToDelete] = useState('')
 
-  const handleOpenDialog = (id) => setPaletteIdToDelete(id);
+  const openDialog = (id) => setPaletteIdToDelete(id);
   const handleDelete = () => deletePalette(paletteIdToDelete, history);
-  const handleCancel = () => setPaletteIdToDelete(null);
+  const handleCancel = () => setPaletteIdToDelete('');
   const goToPalette = (id) => history.push(`/palette/${id}`);
 
   const miniPalettes = palettes.map((palette, id) => (
@@ -34,11 +34,13 @@ function PaletteList({ classes, palettes, history, deletePalette }) {
       <MiniPalette
         {...palette}
         key={palette.id}
-        handleClick={() => goToPalette(palette.id)}
-        openDialog={() => handleOpenDialog(palette.id)}
+        goToPalette={goToPalette}
+        openDialog={openDialog}
       />
     </CSSTransition>
   ));
+
+  console.log("Rendering PaletteList")
 
   return (
     <div className={classes.root}>
@@ -74,6 +76,6 @@ function PaletteList({ classes, palettes, history, deletePalette }) {
       </Dialog>
     </div >
   );
-}
+});
 
 export default withStyles(styles)(PaletteList);

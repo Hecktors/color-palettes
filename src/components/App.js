@@ -17,6 +17,7 @@ function App({ history }) {
 
   useEffect(() => {
     window.localStorage.setItem('palettes', JSON.stringify(palettes))
+    console.log("App.js useEffect")
   }, [palettes])
 
 
@@ -33,6 +34,8 @@ function App({ history }) {
     setPalettes(updatedPalettes);
     history.push('/')
   }
+
+  console.log("Rendering App")
 
   return (
     <div className='App'>
@@ -82,9 +85,7 @@ function App({ history }) {
                   <Page>
                     <ShadesPalette
                       colorId={routeProps.match.params.colorId}
-                      palette={generatePalette(
-                        findPalette(routeProps.match.params.paletteId)
-                      )}
+                      palette={generatePalette(findPalette(routeProps.match.params.paletteId))}
                     />
                   </Page>
                 )}
