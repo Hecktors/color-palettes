@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import ColorBox from './ColorBox';
-import Header from './Header';
-import Footer from './PaletteFooter';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 import styles from '../styles/ShadesPaletteStyles';
+import ColorBox from './ColorBox';
+import Header from './Header';
+import Footer from './PaletteFooter';
 
 function ShadesPalette({ palette, classes, colorId, palette: { paletteName, emoji, id } }) {
   const [format, setFormat] = useState('hex')

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import MiniPalette from './MiniPalette';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import MiniPalette from './MiniPalette';
 import { withStyles } from '@material-ui/styles';
 import styles from '../styles/PaletteListStyles';
 import Avatar from '@material-ui/core/Avatar';
@@ -17,7 +17,7 @@ import blue from '@material-ui/core/colors/blue';
 import red from '@material-ui/core/colors/red';
 
 function PaletteList({ classes, palettes, history, deletePalette }) {
-  const [paletteIdToDelete, setPaletteIdToDelete] = useState(null)
+  const [paletteIdToDelete, setPaletteIdToDelete] = useState(false)
 
   const handleOpenDialog = (id) => setPaletteIdToDelete(id);
   const handleDelete = () => deletePalette(paletteIdToDelete);
@@ -51,7 +51,7 @@ function PaletteList({ classes, palettes, history, deletePalette }) {
           {miniPalettes}
         </TransitionGroup>
       </div>
-      <Dialog open={paletteIdToDelete} aria-labelledby="delete-dialog-title">
+      <Dialog open={!!paletteIdToDelete} aria-labelledby="delete-dialog-title">
         <DialogTitle id="delete-dialog-titile">Delete Palette?</DialogTitle>
         <List>
           <ListItem button onClick={handleDelete}>

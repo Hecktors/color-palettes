@@ -15,20 +15,20 @@ export default {
     '&:hover svg': {
       opacity: 1
     },
-    // itemEnter: {
-    //   opacity: 0,
-    // },
-    // itemEnterActive: {
-    //   opacity: 1,
-    //   transition: 'opacity 500ms ease-in',
-    // },
-    // itemExit: {
-    //   opacity: 1,
-    // },
-    // itemExitActive: {
-    //   opacity: 0,
-    //   transition: 'opacity 500ms ease-in',
-    // },
+    fadeEnter: {
+      opacity: 0,
+    },
+    fadeEnterActive: {
+      opacity: 1,
+      transition: 'opacity 500ms ease-in',
+    },
+    fadeExit: {
+      opacity: 1,
+    },
+    fadeExitActive: {
+      opacity: 0,
+      transition: 'opacity 500ms ease-in',
+    },
   },
   colorBoxes: {
     flexGrow: 1,
