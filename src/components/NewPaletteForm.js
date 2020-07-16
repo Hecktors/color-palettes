@@ -66,7 +66,6 @@ function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) 
         palettes={palettes}
         handleSubmit={handleSubmit}
         setOpen={() => setOpen(true)}
-        t
       />
 
       <Drawer
@@ -117,7 +116,7 @@ function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) 
           colors={colors}
           deleteColor={deleteColor}
           onSortEnd={onSortEnd}
-          distance={1}
+          distance={10}
           axis='xy'
         />
       </main>
