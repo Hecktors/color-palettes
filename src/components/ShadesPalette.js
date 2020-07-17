@@ -26,7 +26,7 @@ function ShadesPalette({ palette, classes, colorId, palette: { paletteName, emoj
       key={shade.name}
       name={shade.name}
       color={shade[format]}
-      showLink={false}
+      linkIsShown={false}
     />
   ));
 

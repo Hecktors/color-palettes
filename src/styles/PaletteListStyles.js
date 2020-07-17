@@ -1,5 +1,5 @@
 import sizes from './sizes';
-import bg from './bg.svg';
+// import bg from './bg.svg';
 
 export default {
   '@global': {
@@ -11,14 +11,15 @@ export default {
     }
   },
   root: {
-    color: 'white',
+    // color: 'white',
     height: '100vh',
     overflowY: 'scroll',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    backgroundColor: '#030f34',
-    backgroundImage: `url(${bg})`,
+    // backgroundColor: '#030f34',
+    // backgroundImage: `url(${bg})`,
+    // backgroundSize: 'cover',
     transition: 'opacity 0.5s ease-out'
     /* background by SVGBackgrounds.com */
   },

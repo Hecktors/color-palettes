@@ -7,13 +7,14 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import PaletteDialog from './PaletteDialog';
 
-function PaletteFormNav({ classes, palettes, handleSubmit, open, setOpen }) {
-  const [showForm, setShowForm] = useState(false);
+function PaletteFormNav({ classes, palettes, handleSubmit, isOpen, setIsOpen }) {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
     <div className={classes.root} >
@@ -22,28 +23,29 @@ function PaletteFormNav({ classes, palettes, handleSubmit, open, setOpen }) {
         position='fixed'
         color='default'
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
+          [classes.appBarShift]: isOpen,
         })}
       >
         <Toolbar className={classes.toolbar}>
+
           <IconButton
             color='inherit'
             aria-label='open drawer'
-            onClick={setOpen}
+            onClick={setIsOpen}
             edge='start'
-            className={clsx(classes.menuButton, open)}
+            className={clsx(classes.menuButton, isOpen)}
           >
-            {!open && < ChevronRightIcon />}
+            {!isOpen && <ChevronRightIcon />}
           </IconButton>
           <Typography variant='h6' noWrap className={clsx(classes.title)}>
             Create A Palette
           </Typography>
         </Toolbar>
         <div className={classes.navBtns}>
-          <Link to="/">
-            <Button variant='contained' color='secondary' className={classes.navBtn}>Go Back</Button>
-          </Link>
-          <Button variant="contained" color="primary" className={classes.navBtn} onClick={() => setShowForm(true)}>
+          {/* <Link to="/"> */}
+          {/* <Button variant='contained' color='secondary' className={classes.navBtn}>Go Back</Button> */}
+          {/* </Link> */}
+          <Button variant="contained" color="primary" className={classes.navBtn} onClick={() => setIsDialogOpen(true)}>
             Save
           </Button>
         </div>
@@ -52,8 +54,8 @@ function PaletteFormNav({ classes, palettes, handleSubmit, open, setOpen }) {
         <PaletteDialog
           palettes={palettes}
           handleSubmit={handleSubmit}
-          showForm={showForm}
-          setShowForm={setShowForm}
+          isOpen={isDialogOpen}
+          setIsOpen={setIsDialogOpen}
         />
       }
     </div >

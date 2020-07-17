@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/NewPaletteFormStyles'
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -17,12 +20,11 @@ import seedColors from '../seedColors';
 NewPaletteForm.defaultProps = { maxColors: 20 }
 
 function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) {
-  const [open, setOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
   const [colors, setColors] = useState(seedColors[0].colors);
-  // const [colors, setColors] = useState([]);
   const paletteIsFull = colors.length >= maxColors
 
-  const handleDrawerClose = () => setOpen(false);
+  const handleDrawerClose = () => setIsOpen(false);
 
   const addNewColor = (newColor) => {
     console.log("colors", colors)
@@ -64,23 +66,27 @@ function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) 
   return (
     <div className={classes.root}>
       <PaletteFormNav
-        open={open}
+        isOpen={isOpen}
         colors={colors}
         palettes={palettes}
         handleSubmit={handleSubmit}
-        setOpen={() => setOpen(true)}
+        setIsOpen={() => setIsOpen(true)}
       />
 
       <Drawer
         className={classes.drawer}
         variant='persistent'
         anchor='left'
-        open={open}
+        open={isOpen}
         classes={{
           paper: classes.drawerPaper,
         }}
       >
         <div className={classes.drawerHeader}>
+          <Link to="/">
+            {/* <Button variant='contained' color='secondary' className={classes.navBtn}>Go Back</Button> */}
+            <ArrowBack />
+          </Link>
           <IconButton onClick={handleDrawerClose}>
             <ChevronLeftIcon />
           </IconButton>
@@ -111,7 +117,7 @@ function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) 
       </Drawer>
       <main
         className={clsx(classes.content, {
-          [classes.contentShift]: open,
+          [classes.contentShift]: isOpen,
         })}
       >
         <div className={classes.drawerHeader} />

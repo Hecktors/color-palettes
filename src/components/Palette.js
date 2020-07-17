@@ -19,7 +19,7 @@ function Palette({
       {...color}
       color={color[format]}
       paletteId={id}
-      showLink
+      linkIsShown
     />
   ));
 

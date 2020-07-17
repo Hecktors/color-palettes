@@ -3,7 +3,7 @@ import sizes from './sizes';
 
 export default theme => ({
   root: {
-    // display: "flex",
+    // color: 'var(--main-color)',
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -14,6 +14,9 @@ export default theme => ({
     justifyContent: "space-between",
     alignItems: "center",
     height: "64px",
+    backgroundColor: 'transparent',
+    color: 'var(--main-color)',
+
   },
   appBarShift: {
     width: `calc(100% - ${DRAWER_WIDTH}px)`,

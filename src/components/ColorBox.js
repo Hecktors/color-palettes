@@ -4,25 +4,25 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 import styles from '../styles/ColorBoxStyles';
 
-function ColorBox({ name, color, id, paletteId, showLink, classes }) {
-  const [copied, setCopied] = useState(false)
+function ColorBox({ name, color, id, paletteId, linkIsShown, classes }) {
+  const [isCopied, setIsCopied] = useState(false)
 
   useEffect(() => {
-    copied && setTimeout(() => setCopied(false), 1500);
-  }, [copied])
+    isCopied && setTimeout(() => setIsCopied(false), 1500);
+  }, [isCopied])
 
   return (
-    <CopyToClipboard onCopy={() => setCopied(true)} text={color} >
+    <CopyToClipboard onCopy={() => setIsCopied(true)} text={color} >
       <div className={classes.ColorBox} style={{ background: color }}>
         <div
           className={`${classes.copyOverlay} ${
-            copied ? classes.showOverlay : ''
+            isCopied ? classes.showOverlay : ''
             }`}
           style={{ background: color }}
         />
         <div
           className={
-            copied
+            isCopied
               ? [classes.copyMsg, classes.showMsg].join(' ')
               : classes.copyMsg
           }
@@ -36,7 +36,7 @@ function ColorBox({ name, color, id, paletteId, showLink, classes }) {
           </div>
           <button className={classes.copyButton}>Copy</button>
         </div>
-        {showLink && (
+        {linkIsShown && (
           <Link
             className={classes.seeMore}
             to={`/palette/${paletteId}/${id}`}

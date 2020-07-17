@@ -1,31 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import ArrowBack from '@material-ui/icons/ArrowBack'
 import Slider from 'rc-slider';
 import SimpleSnackbar from './SimpleSnackbar';
 
 import 'rc-slider/assets/index.css';
 import styles from '../styles/HeaderStyles';
 
-function Header({ paletteName, emoji, level, changeLevel, showSlider, changeFormat, classes }) {
+function Header({ history, paletteName, emoji, level, changeLevel, showSlider, changeFormat, classes }) {
   const [format, setFormat] = useState('hex')
-  const [showSnackbar, setShowSnackbar] = useState(false)
+  const [snackbarIsOpen, setSnackbarIsOpen] = useState(false)
 
   useEffect(() => { changeFormat(format) }, [format, changeFormat]);
 
   const handleChange = (e) => {
     setFormat(e.target.value);
-    setShowSnackbar(true);
+    setSnackbarIsOpen(true);
   };
 
-  const closeSnackbar = () => setShowSnackbar(false);
+  const closeSnackbar = () => setSnackbarIsOpen(false);
 
   return (
     <header className={classes.Header}>
       <div className={classes.logo}>
-        <Link to='/palette'>{paletteName} {emoji}</Link>
+        <ArrowBack onClick={() => history.goBack()} />
+        {/* <Link to='/palette'>{paletteName} {emoji}</Link> */}
+        {paletteName} {emoji}
       </div>
       {showSlider && (
         <div className={classes.sliderContainer}>
@@ -51,11 +54,11 @@ function Header({ paletteName, emoji, level, changeLevel, showSlider, changeForm
 
       <SimpleSnackbar
         format={format}
-        open={showSnackbar}
+        isVisible={snackbarIsOpen}
         close={closeSnackbar}
       />
-    </header>
+    </header >
   );
 }
 
-export default withStyles(styles)(Header);
+export default withRouter(withStyles(styles)(Header));

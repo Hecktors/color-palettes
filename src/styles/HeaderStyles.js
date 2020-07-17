@@ -12,12 +12,15 @@ export default {
     fontSize: '18px',
     [sizes.down('xs')]: {
       fontSize: '10px',
-    }
+    },
+    '& svg': {
+      cursor: 'pointer',
+      marginRight: '10px',
+    },
   },
   logo: {
     padding: ' 0 10px',
     fontSize: '20px',
-    // backgroundColor: '#eceff1',
     fontFamily: "'Roboto', sans-serif",
     height: '100%',
     display: 'flex',
@@ -26,11 +29,10 @@ export default {
       fontSize: '12px',
       padding: ' 0 5px',
       height: 'auto',
-      // backgroundColor: 'transparent'
     },
     '& a': {
       textDecoration: 'none',
-      color: '#000',
+      // color: '#000',
     },
   },
   sliderContainer: {
@@ -64,10 +66,6 @@ export default {
     },
   },
   selectContainer: {
-    // paddingRight: '6px',
     textAlign: 'right',
-    // minWidth: '30%',
-    // marginLeft: 'auto',
-    // marginRight: '1rem',
   },
 };

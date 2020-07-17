@@ -3,8 +3,9 @@ import sizes from './sizes'
 
 export default {
   ColorBox: {
-    width: '20%',
-    height: (props) => (props.showLink ? '25%' : '50%'),
+    // width: '20%',
+    width: (props) => (props.linkIsShown ? '20%' : '10%'),
+    height: (props) => (props.linkIsShown ? '25%' : '100%'),
     display: 'inline-block',
     position: 'relative',
     cursor: 'pointer',
@@ -12,16 +13,16 @@ export default {
       opacity: 1,
     },
     [sizes.down('lg')]: {
-      width: (props) => (props.showLink ? '20%' : '10%'),
-      height: (props) => (props.showLink ? '25%' : '100%'),
+      width: (props) => (props.linkIsShown ? '20%' : '10%'),
+      height: (props) => (props.linkIsShown ? '25%' : '100%'),
     },
     [sizes.down('md')]: {
-      width: (props) => (props.showLink ? '33%' : '10%'),
-      height: (props) => (props.showLink ? '14.28%' : '100%'),
+      width: (props) => (props.linkIsShown ? '33%' : '10%'),
+      height: (props) => (props.linkIsShown ? '14.28%' : '100%'),
     },
     [sizes.down('xs')]: {
-      width: (props) => (props.showLink ? '100%' : '100%'),
-      height: (props) => (props.showLink ? '5%' : '10%'),
+      width: (props) => (props.linkIsShown ? '100%' : '100%'),
+      height: (props) => (props.linkIsShown ? '5%' : '10%'),
     },
 
   },

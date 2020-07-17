@@ -9,7 +9,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-function PaletteDialog({ palettes, handleSubmit, showForm, setShowForm }) {
+function PaletteDialog({ palettes, handleSubmit, isOpen, setIsOpen }) {
   const [newPaletteName, setNewPaletteName] = useState('');
   const [emoji, setEmoji] = useState('🤙')
   const [stage, setStage] = useState("form")
@@ -25,7 +25,7 @@ function PaletteDialog({ palettes, handleSubmit, showForm, setShowForm }) {
   })
 
   const handleClose = () => {
-    setShowForm(false);
+    setIsOpen(false);
     setStage('form');
     setNewPaletteName('');
   };
@@ -34,12 +34,12 @@ function PaletteDialog({ palettes, handleSubmit, showForm, setShowForm }) {
 
   const handleSave = () => {
     handleSubmit(newPaletteName, emoji)
-    setShowForm(false);
+    setIsOpen(false);
   }
 
   return (
     <div>
-      <Dialog open={showForm && stage === "emoji"} onClose={handleClose} aria-labelledby="form-dialog-title">
+      <Dialog open={isOpen && stage === "emoji"} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Choose a Emoji</DialogTitle>
         <Picker onClick={(emoji) => setEmoji(emoji.native)} />
         <DialogActions>
@@ -49,7 +49,7 @@ function PaletteDialog({ palettes, handleSubmit, showForm, setShowForm }) {
               </Button>
         </DialogActions>
       </Dialog>
-      <Dialog open={showForm && stage === "form"} onClose={handleClose} aria-labelledby="form-dialog-title">
+      <Dialog open={isOpen && stage === "form"} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
         <ValidatorForm onSubmit={handleContinue}>
           <DialogContent>

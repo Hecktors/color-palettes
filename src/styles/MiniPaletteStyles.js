@@ -5,9 +5,9 @@ export default {
     height: '200px',
     display: 'flex',
     flexDirection: 'column',
-    border: '1px solid #5f54fb4a',
-    padding: '1rem',
-    background: '#1a1a4d',
+    background: '#ddf',
+    color: '#212121',
+
     position: 'relative',
     borderRadius: '2px',
     cursor: 'pointer',

@@ -11,8 +11,8 @@ export default {
     flexWrap: 'wrap',
   },
   goBack: {
-    width: '20%',
-    height: '50%',
+    width: '10%',
+    height: '100%',
     position: 'relative',
     cursor: 'pointer',
     backgroundColor: '#212121',
@@ -29,10 +29,6 @@ export default {
       border: 'none',
       backgroundColor: 'rgba(255, 255, 255, 0.3)',
       color: '#fff',
-    },
-    [sizes.down("lg")]: {
-      width: "10%",
-      height: "100%"
     },
     [sizes.down("xs")]: {
       width: "100%",
