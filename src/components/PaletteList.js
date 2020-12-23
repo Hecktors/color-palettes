@@ -40,8 +40,6 @@ const PaletteList = React.memo(({ classes, palettes, history, deletePalette }) =
     </CSSTransition>
   ));
 
-  console.log("Rendering PaletteList")
-
   return (
     <div className={classes.root}>
       <div className={classes.container}>

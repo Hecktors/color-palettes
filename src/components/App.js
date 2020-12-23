@@ -17,7 +17,6 @@ function App({ history }) {
 
   useEffect(() => {
     window.localStorage.setItem('palettes', JSON.stringify(palettes))
-    console.log("App.js useEffect")
   }, [palettes])
 
 
@@ -34,8 +33,6 @@ function App({ history }) {
     setPalettes(updatedPalettes);
     history.push('/')
   }
-
-  console.log("Rendering App")
 
   return (
     <div className='App'>

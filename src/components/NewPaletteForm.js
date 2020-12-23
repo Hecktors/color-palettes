@@ -27,8 +27,6 @@ function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) 
   const handleDrawerClose = () => setIsOpen(false);
 
   const addNewColor = (newColor) => {
-    console.log("colors", colors)
-    console.log("newColor", newColor)
     setColors([...colors, newColor]);
   };
 
@@ -57,7 +55,6 @@ function NewPaletteForm({ classes, maxColors, palettes, savePalette, history }) 
   const generateRandomColor = () => {
     const allColors = palettes.map((palette) => palette.colors.map(color => color)).flat();
     const randomColor = allColors[Math.floor(Math.random() * allColors.length)];
-    colors.map(color => console.log(color.name))
     colors.some(color => color.name === randomColor.name)
       ? generateRandomColor()
       : setColors([...colors, { ...randomColor, name: randomColor.name }]);

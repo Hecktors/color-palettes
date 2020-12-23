@@ -23,7 +23,6 @@ const MiniPalette = React.memo(({ classes, paletteName, id, emoji, colors, goToP
     goToPalette(id)
   }
 
-  console.log("Rendering", paletteName, id)
   return (
     <div className={classes.root} onClick={handleClick}>
       <h5 className={classes.title}>
